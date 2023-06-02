@@ -1,0 +1,19 @@
+@import "../../../styles/global-colors";
+@import "../../../styles/global-fonts";
+
+.avatar {
+  &--container {
+    font-size: 3rem;
+    font-family: $secondary-font;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: $color-5;
+    color: $color-white;
+    cursor: pointer;
+  }
+}
