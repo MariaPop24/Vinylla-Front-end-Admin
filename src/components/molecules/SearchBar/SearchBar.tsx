@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../../atoms/Button/Button";
 import "./SearchBar.scss";
 import axios from "axios";
@@ -20,19 +20,17 @@ const SearchBar = () => {
         `http://localhost:8000/api/albums/searchAlbum/${searchText}`
       );
       const albums = response.data.albums;
-      navigate(`./products/all/?q=${encodeURIComponent(searchText)}`, {
-        state: { albums },
-      });
+      console.log(albums);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleKeyDown = (event: { key: string }) => {
-    if (event.key === "Enter") {
+  useEffect(() => {
+    if (searchText) {
       handleSearchRequest();
     }
-  };
+  }, [searchText]);
 
   return (
     <div className="searchBox active">
@@ -42,7 +40,6 @@ const SearchBar = () => {
         name=""
         placeholder="what are you looking for?"
         onChange={handleSearch}
-        onKeyDown={handleKeyDown}
       />
       <Button
         className="searchButton"

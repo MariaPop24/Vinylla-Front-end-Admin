@@ -2,4 +2,11 @@
   &--container {
     padding: 3% 6%;
   }
+
+  &--search {
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+    gap: 5%;
+  }
 }
