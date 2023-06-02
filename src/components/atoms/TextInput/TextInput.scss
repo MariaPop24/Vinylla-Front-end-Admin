@@ -1,0 +1,24 @@
+@import "../../../styles/global-colors";
+@import "../../../styles/global-fonts";
+
+.input-primary-style {
+  border: 1px solid $color-7;
+  background-color: $color-white;
+  padding: 1rem 0;
+  text-indent: 1rem;
+  width: 100% !important;
+  font-family: $secondary-font;
+}
+
+.input-primary-style:focus {
+  outline: none;
+  border: 1px solid $color-5;
+}
+
+.text-input-container {
+  width: 100%;
+}
+
+label {
+  margin-left: 5%;
+}
