@@ -3,6 +3,10 @@ import { LOCALES } from "../locales";
 export default {
   [LOCALES.ENGLISH]: {
     "components.or": "OR",
+    "organisms.products": "products",
+    "organisms.users": "users",
+    "organisms.reports": "reports",
+    "organisms.discounts": "discounts",
     "pages.landingPage.login-btn": "log me in",
     "pages.landingPage.signup-btn": "sign me up",
     "pages.landingPage.title":
