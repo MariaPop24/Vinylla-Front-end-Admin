@@ -1,0 +1,30 @@
+@import "../../styles/global-colors";
+@import "../../styles/global-animations";
+
+.not-found-container {
+  position: relative;
+  background-image: url("../../assets/images/not-found-page-background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  height: 100%;
+  padding: 20%;
+}
+
+.not-found-text-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2% 4%;
+  color: $color-5;
+}
+
+.not-found-title {
+  font-size: 3rem;
+}
+
+.not-found-text {
+  font-size: 1.2rem;
+}
+
+.animate {
+  animation: fadeIn 0.7s forwards;
+}
