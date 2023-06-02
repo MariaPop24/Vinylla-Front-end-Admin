@@ -3,6 +3,7 @@ import "./Navbar.scss";
 import { FormattedMessage } from "react-intl";
 import Button from "../../atoms/Button/Button";
 import { useNavigate } from "react-router-dom";
+import Avatar from "../../atoms/Avatar/Avatar";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const Navbar = () => {
         name={<FormattedMessage id="organisms.users" />}
         hasIconLeft={true}
         iconLeft={require("../../../assets/icons/UserIcon.png")}
-        onClick={handleProductsPage}
+        onClick={handleUsersPage}
       />
       <Button
         className="menu-option"
@@ -44,7 +45,7 @@ const Navbar = () => {
         name={<FormattedMessage id="organisms.reports" />}
         hasIconLeft={true}
         iconLeft={require("../../../assets/icons/FlagIcon.png")}
-        onClick={handleProductsPage}
+        onClick={handleReportsPage}
       />
       <Button
         className="menu-option"
@@ -52,8 +53,9 @@ const Navbar = () => {
         name={<FormattedMessage id="organisms.discounts" />}
         hasIconLeft={true}
         iconLeft={require("../../../assets/icons/DiscountIcon.png")}
-        onClick={handleProductsPage}
+        onClick={handleDiscountsPage}
       />
+      <Avatar />
     </nav>
   );
 };

@@ -3,13 +3,13 @@
 
 .avatar {
   &--container {
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: $secondary-font;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7rem;
-    height: 7rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
     overflow: hidden;
     background-color: $color-5;
