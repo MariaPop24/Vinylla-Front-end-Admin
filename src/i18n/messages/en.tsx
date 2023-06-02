@@ -7,8 +7,11 @@ export default {
     "pages.landingPage.signup-btn": "sign me up",
     "pages.landingPage.title":
       "Welcome to Vinylla's admin portal, the ultimate solution for efficient and streamlined administrative tasks.",
+    "pages.login.title": "Log in",
     "pages.notFoundPage.title": "404",
     "pages.notFoundPage.text":
       "it seems that the page you are looking for does not exist. maybe go back to homepage or try another search?",
+    "pages.signup.title": "Sign up",
+    "pages.signup.button": "continue",
   },
 };
