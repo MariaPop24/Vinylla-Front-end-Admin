@@ -1,0 +1,55 @@
+@import "../../../styles/global-colors";
+
+.searchBox:not(.active) {
+  height: 40px;
+  left: 20%;
+  display: flex;
+  background-color: $color-white;
+  left: 20%;
+}
+
+.searchBox,
+.active > .searchInput {
+  width: 300px;
+  transition: 1s;
+  padding: 0 6px;
+  display: flex;
+  background-color: $color-1;
+}
+
+.searchButton:not(.active) {
+  transition: 1s;
+  background-color: inherit;
+  border-bottom: none;
+}
+
+.searchButton,
+.active {
+  border: none;
+  height: 40px;
+  padding: 0;
+  border-bottom: 1px solid $color-black;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  margin-left: 0.5rem;
+  font-size: 12px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+}
+
+.search-bar-text {
+  margin: auto auto auto 0;
+}
+
+@media screen and (max-width: 620px) {
+  .searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+  }
+}

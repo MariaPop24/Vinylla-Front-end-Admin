@@ -7,6 +7,7 @@ export default {
     "organisms.users": "users",
     "organisms.reports": "reports",
     "organisms.discounts": "discounts",
+    "pages.allProducts.title": "here are all the products",
     "pages.landingPage.login-btn": "log me in",
     "pages.landingPage.signup-btn": "sign me up",
     "pages.landingPage.title":
