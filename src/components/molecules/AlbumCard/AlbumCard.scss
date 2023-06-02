@@ -1,0 +1,47 @@
+@import "../../../styles/global-colors";
+
+.album-card {
+  &--container {
+    display: flex;
+    width: 97%;
+    height: 5rem;
+    border: 1px solid $color-2;
+    padding-right: 2rem;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  &--container:hover {
+    border: 1px solid $color-5;
+  }
+
+  &--cover {
+    height: 100%;
+    width: 5rem;
+  }
+
+  &--text {
+    flex: 1;
+    text-align: start;
+    margin: auto;
+    margin-left: 2rem;
+  }
+
+  &--buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &--button {
+    background: transparent;
+    border: none;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+  }
+
+  &--icons {
+    height: 100%;
+  }
+}

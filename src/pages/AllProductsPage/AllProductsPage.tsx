@@ -1,16 +1,68 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./AllProductsPage.scss";
 import Navbar from "../../components/organisms/Navbar/Navbar";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "../../components/molecules/SearchBar/SearchBar";
 import Button from "../../components/atoms/Button/Button";
 import { FormattedMessage } from "react-intl";
+import axios from "axios";
+import AlbumCard from "../../components/molecules/AlbumCard/AlbumCard";
+import { BeatLoader } from "react-spinners";
 
 const AllProductsPage = () => {
   const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const user = localStorage.getItem("usersData");
   console.log(user);
+
+  const handleSearch = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setSearchText(event.target.value);
+  };
+
+  const handleSearchRequest = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(
+        `http://localhost:8000/api/albums/searchAlbum/${searchText}`
+      );
+      const albums = response.data.albums;
+      setProducts(albums);
+      setIsLoading(false);
+      console.log(albums);
+    } catch (error) {
+      setIsLoading(false);
+      console.error(error);
+    }
+  };
+
+  const fetchProducts = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(
+        "http://localhost:8000/api/albums/getAlbums"
+      );
+      const albums = response.data.albums;
+      setProducts(albums);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    if (searchText) {
+      handleSearchRequest();
+    }
+  }, [searchText]);
 
   useEffect(() => {
     if (user === null) {
@@ -24,7 +76,22 @@ const AllProductsPage = () => {
       <div className="all-products--container">
         <TextBlock messageId="pages.allProducts.title" />
         <div className="all-products--search">
-          <SearchBar />
+          <div className="searchBox active">
+            <input
+              className="searchInput"
+              type="text"
+              name=""
+              placeholder="what are you looking for?"
+              onChange={handleSearch}
+            />
+            <Button
+              className="searchButton"
+              iconClassName="menu-icon"
+              hasIconLeft={true}
+              iconLeft={require("../../assets/icons/SearchIcon.png")}
+              onClick={handleSearchRequest}
+            />
+          </div>
           <Button
             className="btn-secondary-style"
             iconClassName="icon"
@@ -32,6 +99,27 @@ const AllProductsPage = () => {
             iconLeft={require("../../assets/icons/PlusIcon.png")}
             name={<FormattedMessage id="pages.allProducts.add-btn" />}
           />
+        </div>
+        <div className="all-product--albums">
+          {isLoading ? (
+            <div className="all-products--spinner">
+              <BeatLoader />
+            </div>
+          ) : (
+            <div className="all-products--list">
+              {products.length > 0 ? (
+                products.map((item: any, index: number) => (
+                  <div key={index}>
+                    <AlbumCard item={item} />
+                  </div>
+                ))
+              ) : (
+                <div className="all-products--no-results">
+                  <FormattedMessage id="pages.allProducts.no-results" />
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

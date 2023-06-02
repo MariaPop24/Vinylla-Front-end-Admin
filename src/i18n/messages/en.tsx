@@ -8,6 +8,7 @@ export default {
     "organisms.reports": "reports",
     "organisms.discounts": "discounts",
     "pages.allProducts.add-btn": "Add product",
+    "pages.allProducts.no-results": "no items found",
     "pages.allProducts.title": "here are all the products",
     "pages.landingPage.login-btn": "log me in",
     "pages.landingPage.signup-btn": "sign me up",
