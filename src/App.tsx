@@ -4,6 +4,8 @@ import { I18nProvider, LOCALES } from "./i18n";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import SignupPage from "./pages/SignupPage/SignupPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const App = () => {
   return (
@@ -12,6 +14,8 @@ const App = () => {
         <div className="App">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
