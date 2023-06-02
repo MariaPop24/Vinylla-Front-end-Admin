@@ -1,0 +1,10 @@
+@import "../../../styles/global-colors";
+
+#text-block-container {
+  background-color: $color-1;
+  font-size: 1.5rem;
+  text-align: start;
+  width: 100%;
+  padding: 1% 2rem;
+  box-sizing: border-box;
+}
