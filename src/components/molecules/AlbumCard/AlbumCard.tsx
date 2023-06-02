@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AlbumCard.scss";
 import Button from "../../atoms/Button/Button";
 import Tooltip from "../../atoms/Tooltip/Tooltip";
 import { FormattedMessage } from "react-intl";
+import DeleteAlbumModal from "../../organisms/DeleteAlbumModal/DeleteAlbumModal";
 
 const AlbumCard = ({ item }: { item: any }) => {
+  const [isDeleteModal, setIsDeleteModal] = useState(false);
+
+  const handleDeleteModal = () => {
+    setIsDeleteModal(true);
+  };
+
   return (
     <div className="album-card--container">
       <img src={item.images[0]} className="album-card--cover" />
@@ -26,9 +33,13 @@ const AlbumCard = ({ item }: { item: any }) => {
             iconClassName="album-card--icons"
             hasIconOnly={true}
             icon={require("../../../assets/icons/BinIcon.png")}
+            onClick={handleDeleteModal}
           />
         </Tooltip>
       </div>
+      {isDeleteModal && (
+        <DeleteAlbumModal setIsModalDisplayed={setIsDeleteModal} />
+      )}
     </div>
   );
 };

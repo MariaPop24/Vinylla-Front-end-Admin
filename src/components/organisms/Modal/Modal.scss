@@ -1,4 +1,5 @@
 @import "../../../styles/global-colors";
+@import "../../../styles/global-animations";
 
 .backdrop {
   position: fixed;
@@ -20,6 +21,7 @@
   z-index: 10000000;
   background-color: $color-white;
   opacity: 1;
+  animation: fadeIn 0.7s forwards;
 }
 
 .images-overlay {

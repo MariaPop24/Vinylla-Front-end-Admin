@@ -1,0 +1,13 @@
+.delete-modal {
+  &--buttons {
+    display: flex;
+    gap: 1rem;
+    margin: auto;
+    margin-top: 5%;
+    width: 50%;
+  }
+
+  &--container {
+    padding: 5%;
+  }
+}
