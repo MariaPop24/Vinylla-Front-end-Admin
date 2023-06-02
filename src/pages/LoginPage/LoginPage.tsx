@@ -44,13 +44,13 @@ const LoginPage = () => {
   return (
     <div className="landing-page--container">
       <div className="landing-page--content fadeIn">
-        <div>
+        <div className="login-page--title">
           <FormattedMessage id="pages.login.title" />
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-page--form">
           <span style={{ position: "relative" }}>
             <TextInput
-              inputClassName={`signup-field ${
+              inputClassName={`login-field ${
                 errors.email && touched.email ? "input-error" : ""
               }`}
               placeholder="email"
@@ -62,12 +62,12 @@ const LoginPage = () => {
               onBlur={handleBlur}
             />
             {errors.email && touched.email && (
-              <p className="signup-page--error">{errors.email}</p>
+              <p className="login-page--error">{errors.email}</p>
             )}
           </span>
           <span style={{ position: "relative" }}>
             <TextInput
-              inputClassName={`signup-field ${
+              inputClassName={`login-field ${
                 errors.password && touched.password ? "input-error" : ""
               }`}
               placeholder="password"
@@ -79,18 +79,19 @@ const LoginPage = () => {
               onBlur={handleBlur}
             />
             {errors.password && touched.password && (
-              <p className="signup-page--error">{errors.password}</p>
-            )}
-            {isLoading ? (
-              <BeatLoader />
-            ) : (
-              <Button
-                type={ButtonType.Submit}
-                name={<FormattedMessage id="pages.signup.button" />}
-                className="btn-primary-style"
-              />
+              <p className="login-page--error">{errors.password}</p>
             )}
           </span>
+          {isLoading ? (
+            <BeatLoader />
+          ) : (
+            <Button
+              type={ButtonType.Submit}
+              name={<FormattedMessage id="pages.signup.button" />}
+              className="btn-primary-style"
+              style={{ width: "100.5%" }}
+            />
+          )}
         </form>
       </div>
     </div>

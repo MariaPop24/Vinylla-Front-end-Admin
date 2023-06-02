@@ -1,0 +1,46 @@
+@import "../../styles/global-colors";
+
+.login-page {
+  &--form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &--title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+  }
+
+  &--error {
+    color: $color-red;
+    position: absolute;
+    top: 65%;
+  }
+}
+
+.login-field {
+  background-color: $color-white;
+  border: 1px solid $color-3;
+  color: $color-5;
+  transition: 0.3s;
+  font-size: 1rem;
+  text-align: start;
+  padding: 1rem 0rem;
+  text-indent: 1rem;
+  width: 100%;
+}
+
+.login-field:autofill {
+  background: $color-1;
+}
+
+.login-field:focus {
+  outline: 1px solid $color-5;
+}
+
+.input-error {
+  border: 1px solid $color-red;
+  color: $color-red;
+}

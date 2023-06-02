@@ -43,13 +43,13 @@ const SignupPage = () => {
   return (
     <div className="landing-page--container">
       <div className="landing-page--content fadeIn">
-        <div>
+        <div className="login-page--title">
           <FormattedMessage id="pages.signup.title" />
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-page--form">
           <span style={{ position: "relative" }}>
             <TextInput
-              inputClassName={`signup-field ${
+              inputClassName={`login-field ${
                 errors.firstName && touched.firstName ? "input-error" : ""
               }`}
               placeholder="first name"
@@ -61,12 +61,12 @@ const SignupPage = () => {
               onBlur={handleBlur}
             />
             {errors.firstName && touched.firstName && (
-              <p className="signup-page--error">{errors.firstName}</p>
+              <p className="login-page--error">{errors.firstName}</p>
             )}
           </span>
           <span style={{ position: "relative" }}>
             <TextInput
-              inputClassName={`signup-field ${
+              inputClassName={`login-field ${
                 errors.lastName && touched.lastName ? "input-error" : ""
               }`}
               placeholder="last name"
@@ -78,12 +78,12 @@ const SignupPage = () => {
               onBlur={handleBlur}
             />
             {errors.lastName && touched.lastName && (
-              <p className="signup-page--error">{errors.lastName}</p>
+              <p className="login-page--error">{errors.lastName}</p>
             )}
           </span>
           <span style={{ position: "relative" }}>
             <TextInput
-              inputClassName={`signup-field ${
+              inputClassName={`login-field ${
                 errors.password && touched.password ? "input-error" : ""
               }`}
               placeholder="password"
@@ -95,12 +95,12 @@ const SignupPage = () => {
               onBlur={handleBlur}
             />
             {errors.password && touched.password && (
-              <p className="signup-page--error">{errors.password}</p>
+              <p className="login-page--error">{errors.password}</p>
             )}
           </span>
           <span style={{ position: "relative" }}>
             <TextInput
-              inputClassName={`signup-field ${
+              inputClassName={`login-field ${
                 errors.confirmPassword && touched.confirmPassword
                   ? "input-error"
                   : ""
@@ -114,7 +114,7 @@ const SignupPage = () => {
               onBlur={handleBlur}
             />
             {errors.confirmPassword && touched.confirmPassword && (
-              <p className="signup-page--error">{errors.confirmPassword}</p>
+              <p className="login-page--error">{errors.confirmPassword}</p>
             )}
           </span>
           {isLoading ? (
