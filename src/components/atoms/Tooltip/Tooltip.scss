@@ -1,0 +1,24 @@
+@import "../../../styles/global-colors";
+@import "../../../styles/global-fonts";
+@import "../../../styles/global-animations";
+
+.tooltip {
+  &--container {
+    position: relative;
+    display: inline-block;
+  }
+
+  &--text {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $color-3;
+    color: $color-white;
+    padding: 5% 60%;
+    font-size: 0.8rem;
+    font-family: $primary-font;
+    white-space: nowrap;
+    animation: cart 0.3s forwards;
+  }
+}
