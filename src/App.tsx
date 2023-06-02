@@ -3,6 +3,7 @@ import "./App.scss";
 import { I18nProvider, LOCALES } from "./i18n";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <I18nProvider locale={LOCALES.ENGLISH}>
         <div className="App">
           <Routes>
+            <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

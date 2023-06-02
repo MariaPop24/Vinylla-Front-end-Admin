@@ -1,0 +1,32 @@
+@import "../../styles/global-colors";
+@import "../../styles/global-animations";
+
+.landing-page {
+  &--container {
+    position: relative;
+    background-image: url("../../assets/images/landing-page-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    font-size: 1rem;
+  }
+
+  &--content {
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 30%;
+    padding: 2rem 50px;
+    animation: fadeIn 1s;
+  }
+
+  &--buttons {
+    margin-top: 2rem;
+  }
+}

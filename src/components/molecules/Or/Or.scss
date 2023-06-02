@@ -3,10 +3,10 @@
 .or {
   position: relative;
   display: block;
-  width: 35%;
-  font-size: 2rem;
+  width: 100%;
+  font-size: 1.5rem;
   color: $color-5;
-  margin: 1rem auto;
+  margin: 0.5rem auto;
 
   &::after {
     content: "";

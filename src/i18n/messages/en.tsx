@@ -3,6 +3,10 @@ import { LOCALES } from "../locales";
 export default {
   [LOCALES.ENGLISH]: {
     "components.or": "OR",
+    "pages.landingPage.login-btn": "log me in",
+    "pages.landingPage.signup-btn": "sign me up",
+    "pages.landingPage.title":
+      "Welcome to Vinylla's admin portal, the ultimate solution for efficient and streamlined administrative tasks.",
     "pages.notFoundPage.title": "404",
     "pages.notFoundPage.text":
       "it seems that the page you are looking for does not exist. maybe go back to homepage or try another search?",
