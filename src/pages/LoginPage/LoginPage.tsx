@@ -10,6 +10,7 @@ import { InputType } from "../../enums/InputType";
 import { BeatLoader } from "react-spinners";
 import Button from "../../components/atoms/Button/Button";
 import { ButtonType } from "../../enums/ButtonType";
+import { useNavigate } from "react-router-dom";
 
 const initialValues: LoginInterface = {
   email: "",
@@ -17,6 +18,7 @@ const initialValues: LoginInterface = {
 };
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async () => {
@@ -29,6 +31,7 @@ const LoginPage = () => {
       console.log(response);
       localStorage.setItem("usersData", JSON.stringify(response.data.user));
       setIsLoading(false);
+      navigate("/products");
     } catch (error) {
       setIsLoading(false);
       console.log(error);
@@ -83,7 +86,9 @@ const LoginPage = () => {
             )}
           </span>
           {isLoading ? (
-            <BeatLoader />
+            <div className="login-page--spinner">
+              <BeatLoader />
+            </div>
           ) : (
             <Button
               type={ButtonType.Submit}

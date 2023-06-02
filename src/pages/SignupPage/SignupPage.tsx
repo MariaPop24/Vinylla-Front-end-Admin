@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./SignupPage.scss";
 import { FormattedMessage } from "react-intl";
 import { useFormik } from "formik";
 import { SignupInterface } from "../../interfaces/SignupInterface";
@@ -118,7 +117,9 @@ const SignupPage = () => {
             )}
           </span>
           {isLoading ? (
-            <BeatLoader />
+            <div className="login-page--spinner">
+              <BeatLoader />
+            </div>
           ) : (
             <Button
               type={ButtonType.Submit}
