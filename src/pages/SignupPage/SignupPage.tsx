@@ -26,11 +26,9 @@ const SignupPage = () => {
         "http://localhost:8000/api/users/postAdmin",
         { ...values }
       );
-      console.log(response);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
     }
   };
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =

@@ -23,7 +23,6 @@ const DeleteAlbumModal = ({
       const response = await axios.delete(
         `http://localhost:8000/api/albums/deleteAlbum/${albumId}`
       );
-      console.log(response);
       setIsModalDisplayed(false);
       fetchProducts();
     } catch (error) {}

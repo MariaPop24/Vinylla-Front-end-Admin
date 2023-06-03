@@ -3,7 +3,6 @@ import "./Avatar.scss";
 
 const Avatar = ({ onClick }: Props) => {
   const userData = localStorage.getItem("usersData");
-  console.log(userData);
   let userName = null;
   if (userData) {
     userName = JSON.parse(userData);

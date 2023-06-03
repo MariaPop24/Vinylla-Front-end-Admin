@@ -20,7 +20,6 @@ const SearchBar = () => {
         `http://localhost:8000/api/albums/searchAlbum/${searchText}`
       );
       const albums = response.data.albums;
-      console.log(albums);
     } catch (error) {
       console.error(error);
     }

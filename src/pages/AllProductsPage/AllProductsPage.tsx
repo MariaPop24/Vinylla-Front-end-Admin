@@ -15,7 +15,6 @@ const AllProductsPage = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const user = localStorage.getItem("usersData");
-  console.log(user);
 
   const handleSearch = (event: {
     target: { value: React.SetStateAction<string> };
@@ -32,7 +31,6 @@ const AllProductsPage = () => {
       const albums = response.data.albums;
       setProducts(albums);
       setIsLoading(false);
-      console.log(albums);
     } catch (error) {
       setIsLoading(false);
       console.error(error);

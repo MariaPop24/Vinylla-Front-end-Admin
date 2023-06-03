@@ -28,13 +28,11 @@ const LoginPage = () => {
         "http://localhost:8000/api/users/loginUser",
         { ...values }
       );
-      console.log(response);
       localStorage.setItem("usersData", JSON.stringify(response.data.user));
       setIsLoading(false);
       navigate("/products");
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
     }
   };
 
