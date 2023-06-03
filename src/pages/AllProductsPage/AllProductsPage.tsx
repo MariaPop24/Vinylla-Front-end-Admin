@@ -110,7 +110,11 @@ const AllProductsPage = () => {
               {products.length > 0 ? (
                 products.map((item: any, index: number) => (
                   <div key={index}>
-                    <AlbumCard item={item} />
+                    <AlbumCard
+                      item={item}
+                      setIsLoading={setIsLoading}
+                      fetchProducts={fetchProducts}
+                    />
                   </div>
                 ))
               ) : (

@@ -5,7 +5,15 @@ import Tooltip from "../../atoms/Tooltip/Tooltip";
 import { FormattedMessage } from "react-intl";
 import DeleteAlbumModal from "../../organisms/DeleteAlbumModal/DeleteAlbumModal";
 
-const AlbumCard = ({ item }: { item: any }) => {
+const AlbumCard = ({
+  item,
+  setIsLoading,
+  fetchProducts,
+}: {
+  item: any;
+  setIsLoading: any;
+  fetchProducts: any;
+}) => {
   const [isDeleteModal, setIsDeleteModal] = useState(false);
 
   const handleDeleteModal = () => {
@@ -38,7 +46,11 @@ const AlbumCard = ({ item }: { item: any }) => {
         </Tooltip>
       </div>
       {isDeleteModal && (
-        <DeleteAlbumModal setIsModalDisplayed={setIsDeleteModal} />
+        <DeleteAlbumModal
+          setIsModalDisplayed={setIsDeleteModal}
+          albumId={item._id}
+          fetchProducts={fetchProducts}
+        />
       )}
     </div>
   );

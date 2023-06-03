@@ -3,11 +3,16 @@ import "./DeleteAlbumModal.scss";
 import Modal from "../Modal/Modal";
 import { FormattedMessage } from "react-intl";
 import Button from "../../atoms/Button/Button";
+import axios from "axios";
 
 const DeleteAlbumModal = ({
   setIsModalDisplayed,
+  albumId,
+  fetchProducts,
 }: {
   setIsModalDisplayed: any;
+  albumId: string;
+  fetchProducts: any;
 }) => {
   const handleNoButton = () => {
     setIsModalDisplayed(false);
@@ -15,7 +20,12 @@ const DeleteAlbumModal = ({
 
   const handleYesButton = async () => {
     try {
+      const response = await axios.delete(
+        `http://localhost:8000/api/albums/deleteAlbum/${albumId}`
+      );
+      console.log(response);
       setIsModalDisplayed(false);
+      fetchProducts();
     } catch (error) {}
   };
 
