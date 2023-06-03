@@ -8,6 +8,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AllProductsPage from "./pages/AllProductsPage/AllProductsPage";
 import UsersPage from "./pages/UsersPage/UsersPage";
+import ReportsPage from "./pages/ReportsPage/ReportsPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/products" element={<AllProductsPage />} />
+            <Route path="/reports" element={<ReportsPage />} />
             <Route path="/users" element={<UsersPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
