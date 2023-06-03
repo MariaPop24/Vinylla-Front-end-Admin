@@ -1,4 +1,5 @@
 @import "../../styles/global-colors";
+@import "../../styles/global-animations";
 
 .searchBox:not(.active) {
   height: 40px;
@@ -8,6 +9,10 @@
   left: 20%;
 }
 
+.clasa {
+  animation: fadeIn 0.7s forwards;
+}
+
 .searchBox,
 .active > .searchInput {
   width: 300px;
@@ -15,6 +20,7 @@
   padding: 0 6px;
   display: flex;
   background-color: $color-1;
+  animation: fadeIn 0.7s forwards;
 }
 
 .searchButton:not(.active) {
@@ -64,6 +70,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    animation: cart 0.7s forwards;
   }
 
   &--spinner {

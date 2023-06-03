@@ -91,7 +91,7 @@ const AllProductsPage = () => {
             />
           </div>
           <Button
-            className="btn-secondary-style"
+            className="clasa btn-secondary-style "
             iconClassName="icon"
             hasIconLeft={true}
             iconLeft={require("../../assets/icons/PlusIcon.png")}
