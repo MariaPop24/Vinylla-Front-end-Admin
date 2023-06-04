@@ -3,6 +3,8 @@ import { LOCALES } from "../locales";
 export default {
   [LOCALES.ENGLISH]: {
     "components.or": "OR",
+    "molecules.report-card.seen.false": "new report",
+    "molecules.report-card.seen.true": "report waiting for your review",
     "organisms.products": "products",
     "organisms.users": "users",
     "organisms.reports": "reports",
@@ -23,6 +25,7 @@ export default {
     "pages.notFoundPage.title": "404",
     "pages.notFoundPage.text":
       "it seems that the page you are looking for does not exist. maybe go back to homepage or try another search?",
+    "pages.reports.title": "here are all the reports",
     "pages.signup.title": "Sign up",
     "pages.signup.button": "continue",
   },
