@@ -8,12 +8,14 @@ import Button from "../../components/atoms/Button/Button";
 import { FormattedMessage } from "react-intl";
 import { BeatLoader } from "react-spinners";
 import DiscountCard from "../../components/molecules/DiscountCard/DiscountCard";
+import AddDiscountModal from "../../components/organisms/AddDiscountModal/AddDiscountModal";
 
 const DiscountsPage = () => {
   const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [discounts, setDiscounts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [addDiscountModal, setAddDiscountModal] = useState(false);
   const user = localStorage.getItem("usersData");
 
   const handleSearch = (event: {
@@ -95,6 +97,7 @@ const DiscountsPage = () => {
             hasIconLeft={true}
             iconLeft={require("../../assets/icons/PlusIcon.png")}
             name={<FormattedMessage id="pages.discounts.add-btn" />}
+            onClick={() => setAddDiscountModal(true)}
           />
         </div>
         <div className="all-product--albums">
@@ -123,6 +126,9 @@ const DiscountsPage = () => {
           )}
         </div>
       </div>
+      {addDiscountModal && (
+        <AddDiscountModal setIsModalDisplayed={setAddDiscountModal} />
+      )}
     </div>
   );
 };

@@ -1,0 +1,19 @@
+@import "../../../styles/global-colors";
+
+.add-discount {
+  &--container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 5%;
+    color: $color-5;
+  }
+
+  &--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
