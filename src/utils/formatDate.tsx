@@ -1,10 +1,5 @@
-export function formatDate(dateString: string): string {
+export const formatDate = (dateString: string) => {
+  const options: Intl.DateTimeFormatOptions = { day: "numeric", month: "long" };
   const date = new Date(dateString);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-
-  const formattedHours = hours.toString().padStart(2, "0");
-  const formattedMinutes = minutes.toString().padStart(2, "0");
-
-  return `${formattedHours}:${formattedMinutes}`;
-}
+  return date.toLocaleDateString("en-US", options);
+};

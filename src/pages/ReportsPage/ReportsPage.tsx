@@ -6,10 +6,13 @@ import { BeatLoader } from "react-spinners";
 import { FormattedMessage } from "react-intl";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
 import ReportCard from "../../components/molecules/ReportCard/ReportCard";
+import { useNavigate } from "react-router-dom";
 
 const ReportsPage = () => {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [reports, setReports] = useState([]);
+  const user = localStorage.getItem("usersData");
 
   const fetchReports = async () => {
     try {
@@ -30,6 +33,13 @@ const ReportsPage = () => {
   useEffect(() => {
     fetchReports();
   }, []);
+
+  useEffect(() => {
+    if (user === null) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
+
   return (
     <div>
       <Navbar />
