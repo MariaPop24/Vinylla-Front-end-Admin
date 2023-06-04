@@ -63,6 +63,13 @@ const AddDiscountModal = ({
 
   if (defaultValues) {
     initialValues = { ...defaultValues };
+  } else {
+    initialValues = {
+      code: "",
+      value: 0,
+      startDate: new Date(),
+      endDate: new Date(),
+    };
   }
 
   const {
