@@ -6,7 +6,6 @@
     display: flex;
     justify-content: space-between;
     height: 4rem;
-    padding: 0% 2%;
   }
 
   &--code {
@@ -22,6 +21,7 @@
     align-items: center;
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 2%;
   }
 
   &--left * {
