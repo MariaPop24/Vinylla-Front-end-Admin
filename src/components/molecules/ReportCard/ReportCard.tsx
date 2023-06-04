@@ -5,6 +5,7 @@ import Tooltip from "../../atoms/Tooltip/Tooltip";
 import Button from "../../atoms/Button/Button";
 import { formatDate } from "../../../utils/formatDate";
 import DeleteReportModal from "../../organisms/DeleteReportModal/DeleteReportModal";
+import ViewReportModal from "../../organisms/ViewReportModal/ViewReportModal";
 
 const ReportCard = ({
   item,
@@ -16,6 +17,7 @@ const ReportCard = ({
   fetchReports: any;
 }) => {
   const [deleteReportModal, setDeleteReportModal] = useState(false);
+  const [viewReportModal, setViewReportModal] = useState(false);
   return (
     <div
       className="album-card--container report-card--container"
@@ -44,6 +46,7 @@ const ReportCard = ({
             iconClassName="album-card--icons"
             hasIconOnly={true}
             icon={require("../../../assets/icons/EyeIcon.png")}
+            onClick={() => setViewReportModal(true)}
           />
         </Tooltip>
         <Tooltip text={<FormattedMessage id="pages.allProducts.delete" />}>
@@ -59,6 +62,13 @@ const ReportCard = ({
       {deleteReportModal && (
         <DeleteReportModal
           setIsModalDisplayed={setDeleteReportModal}
+          reportId={item._id}
+          fetchReports={fetchReports}
+        />
+      )}
+      {viewReportModal && (
+        <ViewReportModal
+          setIsModalDisplayed={setViewReportModal}
           reportId={item._id}
           fetchReports={fetchReports}
         />
