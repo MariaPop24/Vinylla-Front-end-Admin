@@ -17,6 +17,8 @@ export default {
     "pages.allProducts.see-more": "see more",
     "pages.allProducts.delete": "delete",
     "pages.allProducts.title": "here are all the products",
+    "pages.discounts.title": "here are all the discount codes",
+    "pages.discounts.add-btn": "Add discount",
     "pages.landingPage.login-btn": "log me in",
     "pages.landingPage.signup-btn": "sign me up",
     "pages.landingPage.title":
