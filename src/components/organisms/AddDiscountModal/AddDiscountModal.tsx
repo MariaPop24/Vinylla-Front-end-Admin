@@ -23,23 +23,47 @@ let initialValues: DiscountInterface = {
 const AddDiscountModal = ({
   setIsModalDisplayed,
   fetchDiscounts,
+  defaultValues,
 }: {
   setIsModalDisplayed: any;
   fetchDiscounts: any;
+  defaultValues?: any;
 }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(
+    defaultValues && defaultValues.startDate
+      ? new Date(defaultValues.startDate)
+      : new Date()
+  );
+  const [endDate, setEndDate] = useState(
+    defaultValues && defaultValues.endDate
+      ? new Date(defaultValues.endDate)
+      : new Date()
+  );
+
   const onSubmit = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/discounts/postDiscount",
-        { ...values }
-      );
-      console.log(response);
+      if (defaultValues) {
+        const response = await axios.put(
+          `http://localhost:8000/api/discounts/editDiscount/${defaultValues._id}`,
+          { ...values }
+        );
+        console.log(response, "!!!!!");
+      } else {
+        const response = await axios.post(
+          "http://localhost:8000/api/discounts/postDiscount",
+          { ...values }
+        );
+        console.log(response, "@@@");
+      }
+
       setIsModalDisplayed(false);
       fetchDiscounts();
     } catch (error) {}
   };
+
+  if (defaultValues) {
+    initialValues = { ...defaultValues };
+  }
 
   const {
     values,
@@ -68,7 +92,9 @@ const AddDiscountModal = ({
     <Modal setIsModalDisplayed={setIsModalDisplayed}>
       <div className="add-discount--container">
         <div className="add-discount--header">
-          <p>add a new discount</p>
+          <p>
+            {defaultValues ? "edit discount details" : "add a new discount"}
+          </p>
           <Button
             className="album-card--button"
             iconClassName="album-card--icons"

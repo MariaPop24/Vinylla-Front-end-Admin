@@ -6,6 +6,7 @@ import { FormattedMessage } from "react-intl";
 import Button from "../../atoms/Button/Button";
 import DeleteDiscountModal from "../../organisms/DeleteDiscountModal/DeleteDiscountModal";
 import ViewDiscountModal from "../../organisms/ViewDiscountModal/ViewDiscountModal";
+import AddDiscountModal from "../../organisms/AddDiscountModal/AddDiscountModal";
 
 const DiscountCard = ({
   item,
@@ -17,6 +18,7 @@ const DiscountCard = ({
   const currentDate = new Date();
   const [deleteDiscountModal, setDeleteDiscountModal] = useState(false);
   const [viewDiscountModal, setViewDiscountModal] = useState(false);
+  const [editDiscountModal, setEditDiscountModal] = useState(false);
 
   const getExpirationText = () => {
     const endDate = new Date(item.endDate);
@@ -57,7 +59,9 @@ const DiscountCard = ({
             iconClassName="album-card--icons"
             hasIconOnly={true}
             icon={require("../../../assets/icons/EditIcon.png")}
-            // onClick={handleDeleteModal}
+            onClick={() => {
+              setEditDiscountModal(true);
+            }}
           />
         </Tooltip>
         <Tooltip text={<FormattedMessage id="pages.allProducts.delete" />}>
@@ -81,6 +85,13 @@ const DiscountCard = ({
         <ViewDiscountModal
           discountId={item._id}
           setIsModalDisplayed={setViewDiscountModal}
+        />
+      )}
+      {editDiscountModal && (
+        <AddDiscountModal
+          setIsModalDisplayed={setEditDiscountModal}
+          fetchDiscounts={fetchDiscounts}
+          defaultValues={item}
         />
       )}
     </div>
