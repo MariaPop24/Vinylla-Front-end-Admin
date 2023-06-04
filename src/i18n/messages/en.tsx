@@ -16,6 +16,7 @@ export default {
     "pages.allProducts.no-results": "no items found",
     "pages.allProducts.see-more": "see more",
     "pages.allProducts.delete": "delete",
+    "pages.allProducts.edit": "edit",
     "pages.allProducts.title": "here are all the products",
     "pages.discounts.title": "here are all the discount codes",
     "pages.discounts.add-btn": "Add discount",

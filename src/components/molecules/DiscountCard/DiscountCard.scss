@@ -1,0 +1,47 @@
+@import "../../../styles/global-fonts";
+@import "../../../styles/global-colors";
+
+.discount-card {
+  &--container {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    padding: 0% 2%;
+  }
+
+  &--code {
+    font-size: 1.3rem;
+  }
+
+  &--date {
+    font-family: $secondary-font;
+  }
+
+  &--left {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &--left * {
+    margin-right: 0.5rem;
+  }
+
+  &--right {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  &--right * {
+    margin-left: 0.3rem;
+  }
+}
+
+.expired {
+  color: $color-red;
+}
+
+.expires {
+  color: $color-green;
+}

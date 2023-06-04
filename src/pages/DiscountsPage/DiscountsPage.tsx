@@ -7,6 +7,7 @@ import TextBlock from "../../components/molecules/TextBlock/TextBlock";
 import Button from "../../components/atoms/Button/Button";
 import { FormattedMessage } from "react-intl";
 import { BeatLoader } from "react-spinners";
+import DiscountCard from "../../components/molecules/DiscountCard/DiscountCard";
 
 const DiscountsPage = () => {
   const navigate = useNavigate();
@@ -106,11 +107,11 @@ const DiscountsPage = () => {
               {discounts.length > 0 ? (
                 discounts.map((item: any, index: number) => (
                   <div key={index}>
-                    {/* <AlbumCard
+                    <DiscountCard
                       item={item}
                       setIsLoading={setIsLoading}
                       fetchDiscounts={fetchDiscounts}
-                    /> */}
+                    />
                   </div>
                 ))
               ) : (
