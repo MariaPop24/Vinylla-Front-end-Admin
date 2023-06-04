@@ -5,6 +5,7 @@ export default {
     "components.or": "OR",
     "molecules.report-card.seen.false": "new report",
     "molecules.report-card.seen.true": "report waiting for your review",
+    "organisms.add-discount.btn": "add discount",
     "organisms.products": "products",
     "organisms.users": "users",
     "organisms.reports": "reports",

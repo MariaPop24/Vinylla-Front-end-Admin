@@ -1,4 +1,5 @@
 @import "../../../styles/global-colors";
+@import "../../../styles/global-fonts";
 
 .add-discount {
   &--container {
@@ -15,5 +16,16 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+  }
+
+  &--content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &--content * {
+    font-family: $secondary-font;
   }
 }

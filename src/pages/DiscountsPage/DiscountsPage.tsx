@@ -127,7 +127,10 @@ const DiscountsPage = () => {
         </div>
       </div>
       {addDiscountModal && (
-        <AddDiscountModal setIsModalDisplayed={setAddDiscountModal} />
+        <AddDiscountModal
+          fetchDiscounts={fetchDiscounts}
+          setIsModalDisplayed={setAddDiscountModal}
+        />
       )}
     </div>
   );

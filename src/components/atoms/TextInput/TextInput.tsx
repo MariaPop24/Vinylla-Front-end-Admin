@@ -14,6 +14,8 @@ const TextInput = ({
   id,
   name,
   value,
+  min,
+  max,
 }: Props) => {
   return (
     <div className="text-input-container">
@@ -26,6 +28,8 @@ const TextInput = ({
         className={inputClassName}
         onChange={onChange}
         onBlur={onBlur}
+        min={min}
+        max={max}
       />
       {label && (
         <label className={labelClassName} htmlFor={htmlFor}>
@@ -47,7 +51,9 @@ type Props = {
   htmlFor?: string;
   id?: string;
   name?: string;
-  value?: string;
+  value?: string | number;
+  min?: number;
+  max?: number;
 };
 
 export default TextInput;

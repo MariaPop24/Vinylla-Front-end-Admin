@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AddDiscountModal.scss";
 import Modal from "../Modal/Modal";
 import { DiscountInterface } from "../../../interfaces/DiscountInterface";
 import { useFormik } from "formik";
 import discountSchema from "../../../schemas/discountSchema";
 import Button from "../../atoms/Button/Button";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import TextInput from "../../atoms/TextInput/TextInput";
+import { InputType } from "../../../enums/InputType";
+import { ButtonType } from "../../../enums/ButtonType";
+import { FormattedMessage } from "react-intl";
+import axios from "axios";
 
 let initialValues: DiscountInterface = {
   code: "",
@@ -15,29 +22,48 @@ let initialValues: DiscountInterface = {
 
 const AddDiscountModal = ({
   setIsModalDisplayed,
+  fetchDiscounts,
 }: {
   setIsModalDisplayed: any;
+  fetchDiscounts: any;
 }) => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const onSubmit = async () => {
-    // try {
-    //   setIsLoading(true);
-    //   const response = await axios.post(
-    //     "http://localhost:8000/api/users/postAdmin",
-    //     { ...values }
-    //   );
-    //   setIsLoading(false);
-    // } catch (error) {
-    //   setIsLoading(false);
-    // }
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/discounts/postDiscount",
+        { ...values }
+      );
+      console.log(response);
+      setIsModalDisplayed(false);
+      fetchDiscounts();
+    } catch (error) {}
   };
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
-    useFormik<DiscountInterface>({
-      initialValues,
-      validationSchema: discountSchema,
-      onSubmit,
-    });
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik<DiscountInterface>({
+    initialValues,
+    validationSchema: discountSchema,
+    onSubmit,
+  });
 
+  const onSelectStartDate = (val: Date) => {
+    setStartDate(val);
+    setFieldValue("startDate", val);
+  };
+
+  const onSelectEndDate = (val: Date) => {
+    setEndDate(val);
+    setFieldValue("endDate", val);
+  };
   return (
     <Modal setIsModalDisplayed={setIsModalDisplayed}>
       <div className="add-discount--container">
@@ -51,6 +77,89 @@ const AddDiscountModal = ({
             onClick={() => setIsModalDisplayed(false)}
           />
         </div>
+        <form className="add-discount--content" onSubmit={handleSubmit}>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+            }}
+          >
+            <span style={{ position: "relative", width: "100%" }}>
+              <TextInput
+                inputClassName={`login-field ${
+                  errors.code && touched.code ? "input-error" : ""
+                }`}
+                value={values.code}
+                type={InputType.TEXT}
+                placeholder="code"
+                name="code"
+                id="code"
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.code && touched.code && (
+                <p className="login-page--error">{errors.code}</p>
+              )}
+            </span>
+            <span style={{ position: "relative", width: "100%" }}>
+              <TextInput
+                inputClassName={`login-field ${
+                  errors.value && touched.value ? "input-error" : ""
+                }`}
+                value={values.value}
+                type={InputType.NUMBER}
+                placeholder="value"
+                name="value"
+                id="value"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                min={1}
+                max={100}
+              />
+              {errors.value && touched.value && (
+                <p className="login-page--error">{errors.value}</p>
+              )}
+            </span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+            }}
+          >
+            <span style={{ position: "relative", width: "100%" }}>
+              <DatePicker
+                className={`login-field ${
+                  errors.startDate && touched.startDate ? "input-error" : ""
+                }`}
+                selected={startDate}
+                onChange={(value: Date) => onSelectStartDate(value)}
+              />
+              {errors.startDate && touched.startDate && (
+                <p className="login-page--error">{errors.startDate}</p>
+              )}
+            </span>
+            <span style={{ position: "relative", width: "100%" }}>
+              <DatePicker
+                className={`login-field ${
+                  errors.startDate && touched.startDate ? "input-error" : ""
+                }`}
+                selected={endDate}
+                onChange={(value: Date) => onSelectEndDate(value)}
+                minDate={startDate}
+              />
+              {errors.startDate && touched.startDate && (
+                <p className="login-page--error">{errors.startDate}</p>
+              )}
+            </span>
+          </div>
+          <Button
+            style={{ height: "4rem", width: "40%", alignSelf: "center" }}
+            type={ButtonType.Submit}
+            name={<FormattedMessage id="pages.signup.button" />}
+            className="btn-secondary-style"
+          />
+        </form>
       </div>
     </Modal>
   );
