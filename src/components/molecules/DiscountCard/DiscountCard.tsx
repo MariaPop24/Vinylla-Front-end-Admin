@@ -19,7 +19,11 @@ const DiscountCard = ({
   const getExpirationText = () => {
     const endDate = new Date(item.endDate);
     if (currentDate > endDate) {
-      return <span className="expired">expired</span>;
+      return (
+        <span className="expired">
+          expired on {formatDateDiscount(item.endDate)}
+        </span>
+      );
     }
     return (
       <span className="expires">
