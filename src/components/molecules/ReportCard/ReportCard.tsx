@@ -20,10 +20,18 @@ const ReportCard = ({
       style={{ height: "3rem", fontWeight: `${!item.seen && "bold"}` }}
     >
       <div className="report-card--title">
-        {item.seen ? (
-          <FormattedMessage id="molecules.report-card.seen.true" />
+        {item.resolved ? (
+          <div className="report-card--resolved">
+            <FormattedMessage id="molecules.report-card.resolved.true" />
+          </div>
         ) : (
-          <FormattedMessage id="molecules.report-card.seen.false" />
+          <>
+            {item.seen ? (
+              <FormattedMessage id="molecules.report-card.seen.true" />
+            ) : (
+              <FormattedMessage id="molecules.report-card.seen.false" />
+            )}
+          </>
         )}
       </div>
       <div className="album-card--buttons-container">

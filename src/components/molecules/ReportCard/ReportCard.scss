@@ -1,3 +1,5 @@
+@import "../../../styles/global-colors";
+
 .report-card {
   &--container {
     display: flex;
@@ -7,5 +9,9 @@
 
   &--title {
     margin-left: 2%;
+  }
+
+  &--resolved {
+    color: $color-green;
   }
 }
