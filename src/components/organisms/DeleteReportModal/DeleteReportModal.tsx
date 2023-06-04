@@ -4,14 +4,14 @@ import { FormattedMessage } from "react-intl";
 import Button from "../../atoms/Button/Button";
 import axios from "axios";
 
-const DeleteDiscountModal = ({
+const DeleteReportModal = ({
   setIsModalDisplayed,
-  discountId,
-  fetchDiscounts,
+  reportId,
+  fetchReports,
 }: {
   setIsModalDisplayed: any;
-  discountId: string;
-  fetchDiscounts: any;
+  reportId: string;
+  fetchReports: any;
 }) => {
   const handleNoButton = () => {
     setIsModalDisplayed(false);
@@ -20,10 +20,10 @@ const DeleteDiscountModal = ({
   const handleYesButton = async () => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/discounts/deleteDiscount/${discountId}`
+        `http://localhost:8000/api/reports/deleteReport/${reportId}`
       );
       setIsModalDisplayed(false);
-      fetchDiscounts();
+      fetchReports();
     } catch (error) {}
   };
   return (
@@ -47,4 +47,4 @@ const DeleteDiscountModal = ({
   );
 };
 
-export default DeleteDiscountModal;
+export default DeleteReportModal;

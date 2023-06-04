@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ReportCard.scss";
 import { FormattedMessage } from "react-intl";
 import Tooltip from "../../atoms/Tooltip/Tooltip";
 import Button from "../../atoms/Button/Button";
 import { formatDate } from "../../../utils/formatDate";
+import DeleteReportModal from "../../organisms/DeleteReportModal/DeleteReportModal";
 
 const ReportCard = ({
   item,
@@ -14,6 +15,7 @@ const ReportCard = ({
   setIsLoading: any;
   fetchReports: any;
 }) => {
+  const [deleteReportModal, setDeleteReportModal] = useState(false);
   return (
     <div
       className="album-card--container report-card--container"
@@ -50,10 +52,17 @@ const ReportCard = ({
             iconClassName="album-card--icons"
             hasIconOnly={true}
             icon={require("../../../assets/icons/BinIcon.png")}
-            // onClick={() => setDeleteDiscountModal(true)}
+            onClick={() => setDeleteReportModal(true)}
           />
         </Tooltip>
       </div>
+      {deleteReportModal && (
+        <DeleteReportModal
+          setIsModalDisplayed={setDeleteReportModal}
+          reportId={item._id}
+          fetchReports={fetchReports}
+        />
+      )}
     </div>
   );
 };
