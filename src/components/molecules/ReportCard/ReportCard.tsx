@@ -19,7 +19,7 @@ const ReportCard = ({
       className="album-card--container report-card--container"
       style={{ height: "3rem", fontWeight: `${!item.seen && "bold"}` }}
     >
-      <div>
+      <div className="report-card--title">
         {item.seen ? (
           <FormattedMessage id="molecules.report-card.seen.true" />
         ) : (
@@ -34,6 +34,15 @@ const ReportCard = ({
             iconClassName="album-card--icons"
             hasIconOnly={true}
             icon={require("../../../assets/icons/EyeIcon.png")}
+          />
+        </Tooltip>
+        <Tooltip text={<FormattedMessage id="pages.allProducts.delete" />}>
+          <Button
+            className="album-card--button"
+            iconClassName="album-card--icons"
+            hasIconOnly={true}
+            icon={require("../../../assets/icons/BinIcon.png")}
+            // onClick={() => setDeleteDiscountModal(true)}
           />
         </Tooltip>
       </div>
