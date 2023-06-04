@@ -16,6 +16,7 @@ const DiscountsPage = () => {
   const [discounts, setDiscounts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [addDiscountModal, setAddDiscountModal] = useState(false);
+
   const user = localStorage.getItem("usersData");
 
   const handleSearch = (event: {
@@ -110,11 +111,7 @@ const DiscountsPage = () => {
               {discounts.length > 0 ? (
                 discounts.map((item: any, index: number) => (
                   <div key={index}>
-                    <DiscountCard
-                      item={item}
-                      setIsLoading={setIsLoading}
-                      fetchDiscounts={fetchDiscounts}
-                    />
+                    <DiscountCard item={item} fetchDiscounts={fetchDiscounts} />
                   </div>
                 ))
               ) : (

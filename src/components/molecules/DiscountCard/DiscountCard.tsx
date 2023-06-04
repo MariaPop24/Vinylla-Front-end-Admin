@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DiscountCard.scss";
 import { formatDateDiscount } from "../../../utils/formatDateDiscount";
 import Tooltip from "../../atoms/Tooltip/Tooltip";
 import { FormattedMessage } from "react-intl";
 import Button from "../../atoms/Button/Button";
+import DeleteDiscountModal from "../../organisms/DeleteDiscountModal/DeleteDiscountModal";
 
 const DiscountCard = ({
   item,
-  setIsLoading,
   fetchDiscounts,
 }: {
   item: any;
-  setIsLoading: any;
   fetchDiscounts: any;
 }) => {
   const currentDate = new Date();
+  const [deleteDiscountModal, setDeleteDiscountModal] = useState(false);
 
   const getExpirationText = () => {
     const endDate = new Date(item.endDate);
@@ -63,10 +63,17 @@ const DiscountCard = ({
             iconClassName="album-card--icons"
             hasIconOnly={true}
             icon={require("../../../assets/icons/BinIcon.png")}
-            // onClick={handleDeleteModal}
+            onClick={() => setDeleteDiscountModal(true)}
           />
         </Tooltip>
       </div>
+      {deleteDiscountModal && (
+        <DeleteDiscountModal
+          setIsModalDisplayed={setDeleteDiscountModal}
+          fetchDiscounts={fetchDiscounts}
+          discountId={item._id}
+        />
+      )}
     </div>
   );
 };
