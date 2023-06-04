@@ -22,20 +22,20 @@ const DiscountsPage = () => {
     setSearchText(event.target.value);
   };
 
-  //   const handleSearchRequest = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const response = await axios.get(
-  //         `http://localhost:8000/api/discounts/searchDiscounts/${searchText}`
-  //       );
-  //       const discounts = response.data.discounts;
-  //       setDiscounts(discounts);
-  //       setIsLoading(false);
-  //     } catch (error) {
-  //       setIsLoading(false);
-  //       console.error(error);
-  //     }
-  //   };
+  const handleSearchRequest = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(
+        `http://localhost:8000/api/discounts/searchDiscount/${searchText}`
+      );
+      const discounts = response.data.discounts;
+      setDiscounts(discounts);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error(error);
+    }
+  };
 
   const fetchDiscounts = async () => {
     try {
@@ -58,7 +58,7 @@ const DiscountsPage = () => {
 
   useEffect(() => {
     if (searchText) {
-      //   handleSearchRequest();
+      handleSearchRequest();
     }
   }, [searchText]);
 
@@ -86,7 +86,7 @@ const DiscountsPage = () => {
               iconClassName="menu-icon"
               hasIconLeft={true}
               iconLeft={require("../../assets/icons/SearchIcon.png")}
-              //   onClick={handleSearchRequest}
+              onClick={handleSearchRequest}
             />
           </div>
           <Button
