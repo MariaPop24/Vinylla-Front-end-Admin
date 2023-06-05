@@ -73,7 +73,7 @@ const UsersPage = () => {
     <div>
       <Navbar />
       <div className="all-products--container">
-        <TextBlock messageId="pages.allProducts.title" />
+        <TextBlock messageId="pages.users.title" />
         <div className="all-products--search">
           <div className="searchBox active">
             <input

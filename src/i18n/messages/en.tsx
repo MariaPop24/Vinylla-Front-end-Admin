@@ -33,5 +33,6 @@ export default {
     "pages.reports.title": "here are all the reports",
     "pages.signup.title": "Sign up",
     "pages.signup.button": "continue",
+    "pages.users.title": "here are all the registered users",
   },
 };
