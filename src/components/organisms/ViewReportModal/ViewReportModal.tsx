@@ -98,7 +98,7 @@ const ViewReportModal = ({
         )}
         <div className="view-report--footer">
           {report &&
-            (report.resolved ? (
+            (!report.resolved ? (
               <>
                 <span className="view-report--warning">
                   *if you consider this reporting reason to be valid, the author
