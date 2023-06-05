@@ -25,7 +25,7 @@ const Tooltip = ({ text, children }: Props) => {
 };
 
 type Props = {
-  text: JSX.Element;
+  text: JSX.Element | string;
   children: JSX.Element;
 };
 

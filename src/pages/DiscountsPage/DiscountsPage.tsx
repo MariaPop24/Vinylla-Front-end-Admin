@@ -108,7 +108,7 @@ const DiscountsPage = () => {
             </div>
           ) : (
             <div className="all-products--list">
-              {discounts.length > 0 ? (
+              {discounts && discounts.length > 0 ? (
                 discounts.map((item: any, index: number) => (
                   <div key={index}>
                     <DiscountCard item={item} fetchDiscounts={fetchDiscounts} />

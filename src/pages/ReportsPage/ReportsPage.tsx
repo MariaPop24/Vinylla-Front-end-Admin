@@ -52,14 +52,10 @@ const ReportsPage = () => {
             </div>
           ) : (
             <div className="all-products--list">
-              {reports.length > 0 ? (
+              {reports && reports.length > 0 ? (
                 reports.map((item: any, index: number) => (
                   <div key={index}>
-                    <ReportCard
-                      item={item}
-                      setIsLoading={setIsLoading}
-                      fetchReports={fetchReports}
-                    />
+                    <ReportCard item={item} fetchReports={fetchReports} />
                   </div>
                 ))
               ) : (

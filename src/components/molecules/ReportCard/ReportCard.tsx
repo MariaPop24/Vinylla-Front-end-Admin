@@ -10,11 +10,9 @@ import axios from "axios";
 
 const ReportCard = ({
   item,
-  setIsLoading,
   fetchReports,
 }: {
   item: any;
-  setIsLoading: any;
   fetchReports: any;
 }) => {
   const [deleteReportModal, setDeleteReportModal] = useState(false);

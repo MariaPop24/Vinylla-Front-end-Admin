@@ -105,7 +105,7 @@ const AllProductsPage = () => {
             </div>
           ) : (
             <div className="all-products--list">
-              {products.length > 0 ? (
+              {products && products.length > 0 ? (
                 products.map((item: any, index: number) => (
                   <div key={index}>
                     <AlbumCard

@@ -1,0 +1,31 @@
+@import "../../../styles/global-colors";
+@import "../../../styles/global-fonts";
+
+.user-card {
+  &--container {
+    display: flex;
+    justify-content: space-between;
+    width: 97%;
+    height: 5rem;
+    border: 1px solid $color-2;
+    padding-right: 2rem;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  &--container:hover {
+    border: 1px solid $color-5;
+  }
+
+  &--title {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-left: 3%;
+
+    span {
+      font-size: 1.3rem;
+      margin-left: 1.5rem;
+    }
+  }
+}
