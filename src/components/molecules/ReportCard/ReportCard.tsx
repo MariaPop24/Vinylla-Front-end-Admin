@@ -27,10 +27,7 @@ const ReportCard = ({
         const response = await axios.put(
           `http://localhost:8000/api/reports/markAsRead/${item._id}`
         );
-        console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     }
   };
 

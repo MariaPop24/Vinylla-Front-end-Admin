@@ -24,11 +24,9 @@ const ViewDiscountModal = ({
       );
       const discount = response.data.discount;
       setDiscountDetails(discount);
-      console.log(discount);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      console.error(error);
     }
   };
 

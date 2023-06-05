@@ -27,7 +27,6 @@ const ViewReportModal = ({
         `http://localhost:8000/api/reports/getReport/${reportId}`
       );
       const report = response.data.report;
-      console.log(report);
       const resp = await axios.get(
         `http://localhost:8000/api/reviews/getReviewById/${report.review}`
       );

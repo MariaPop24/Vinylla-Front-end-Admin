@@ -23,7 +23,6 @@ const ViewUserModal = ({
       );
       const user = response.data.user;
       setUserDetails(user);
-      console.log(user);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);

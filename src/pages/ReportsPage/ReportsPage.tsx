@@ -20,13 +20,11 @@ const ReportsPage = () => {
       const response = await axios.get(
         "http://localhost:8000/api/reports/getReports"
       );
-      console.log(response);
       const reports = response.data.reports;
       setReports(reports);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      console.error(error);
     }
   };
 

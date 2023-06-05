@@ -47,13 +47,11 @@ const AddDiscountModal = ({
           `http://localhost:8000/api/discounts/editDiscount/${defaultValues._id}`,
           { ...values }
         );
-        console.log(response, "!!!!!");
       } else {
         const response = await axios.post(
           "http://localhost:8000/api/discounts/postDiscount",
           { ...values }
         );
-        console.log(response, "@@@");
       }
 
       setIsModalDisplayed(false);

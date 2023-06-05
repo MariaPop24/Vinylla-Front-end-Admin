@@ -43,7 +43,6 @@ const UsersPage = () => {
       const response = await axios.get(
         "http://localhost:8000/api/users/getRegisteredUsers"
       );
-      console.log(response);
       const users = response.data.users;
       setUsers(users);
       setIsLoading(false);
