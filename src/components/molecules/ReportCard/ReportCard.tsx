@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ReportCard.scss";
 import { FormattedMessage } from "react-intl";
 import Tooltip from "../../atoms/Tooltip/Tooltip";
@@ -6,6 +6,7 @@ import Button from "../../atoms/Button/Button";
 import { formatDate } from "../../../utils/formatDate";
 import DeleteReportModal from "../../organisms/DeleteReportModal/DeleteReportModal";
 import ViewReportModal from "../../organisms/ViewReportModal/ViewReportModal";
+import axios from "axios";
 
 const ReportCard = ({
   item,
@@ -18,10 +19,33 @@ const ReportCard = ({
 }) => {
   const [deleteReportModal, setDeleteReportModal] = useState(false);
   const [viewReportModal, setViewReportModal] = useState(false);
+  const [seen, setSeen] = useState(false);
+
+  const handleViewReport = async () => {
+    setViewReportModal(true);
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/api/reports/markAsRead/${item._id}`
+      );
+      setSeen(true);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    setSeen(item.seen);
+  }, [item.seen]);
+
+  useEffect(() => {
+    setSeen(item.seen);
+  }, [item]);
+
   return (
     <div
       className="album-card--container report-card--container"
-      style={{ height: "3rem", fontWeight: `${!item.seen && "bold"}` }}
+      style={{ height: "3rem", fontWeight: seen ? "normal" : "bold" }}
     >
       <div className="report-card--title">
         {item.resolved ? (
@@ -30,7 +54,7 @@ const ReportCard = ({
           </div>
         ) : (
           <>
-            {item.seen ? (
+            {seen ? (
               <FormattedMessage id="molecules.report-card.seen.true" />
             ) : (
               <FormattedMessage id="molecules.report-card.seen.false" />
@@ -46,7 +70,7 @@ const ReportCard = ({
             iconClassName="album-card--icons"
             hasIconOnly={true}
             icon={require("../../../assets/icons/EyeIcon.png")}
-            onClick={() => setViewReportModal(true)}
+            onClick={handleViewReport}
           />
         </Tooltip>
         <Tooltip text={<FormattedMessage id="pages.allProducts.delete" />}>
