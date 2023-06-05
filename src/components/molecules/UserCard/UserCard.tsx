@@ -5,6 +5,7 @@ import Button from "../../atoms/Button/Button";
 import Tooltip from "../../atoms/Tooltip/Tooltip";
 import UserAvatar from "../../atoms/UserAvatar/UserAvatar";
 import ViewUserModal from "../../organisms/ViewUserModal/ViewUserModal";
+import BanUserModal from "../../organisms/BanUserModal/BanUserModal";
 
 const UserCard = ({ item, fetchUsers }: { item: any; fetchUsers: any }) => {
   const [viewUserModal, setViewUserModal] = useState(false);
@@ -32,7 +33,7 @@ const UserCard = ({ item, fetchUsers }: { item: any; fetchUsers: any }) => {
               iconClassName="album-card--icons"
               hasIconOnly={true}
               icon={require("../../../assets/icons/NotAllowedIcon.png")}
-              // onClick={() => setDeleteReportModal(true)}
+              onClick={() => setBanUserModal(true)}
             />
           </Tooltip>
         )}
@@ -41,6 +42,13 @@ const UserCard = ({ item, fetchUsers }: { item: any; fetchUsers: any }) => {
         <ViewUserModal
           setIsModalDisplayed={setViewUserModal}
           userId={item._id}
+        />
+      )}
+      {banUserModal && (
+        <BanUserModal
+          setIsModalDisplayed={setBanUserModal}
+          userId={item._id}
+          fetchUsers={fetchUsers}
         />
       )}
     </div>
