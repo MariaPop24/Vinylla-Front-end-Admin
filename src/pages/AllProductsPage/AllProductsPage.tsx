@@ -16,6 +16,10 @@ const AllProductsPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const user = localStorage.getItem("usersData");
 
+  const handleAddProduct = () => {
+    navigate("/add-product");
+  };
+
   const handleSearch = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
@@ -96,6 +100,7 @@ const AllProductsPage = () => {
             hasIconLeft={true}
             iconLeft={require("../../assets/icons/PlusIcon.png")}
             name={<FormattedMessage id="pages.allProducts.add-btn" />}
+            onClick={handleAddProduct}
           />
         </div>
         <div className="all-product--albums">

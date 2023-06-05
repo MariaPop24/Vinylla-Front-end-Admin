@@ -10,6 +10,7 @@ import AllProductsPage from "./pages/AllProductsPage/AllProductsPage";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import ReportsPage from "./pages/ReportsPage/ReportsPage";
 import DiscountsPage from "./pages/DiscountsPage/DiscountsPage";
+import AddProductPage from "./pages/AddProductPage/AddProductPage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <div className="App">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/add-product" element={<AddProductPage />} />
             <Route path="/discounts" element={<DiscountsPage />} />
             <Route path="/products" element={<AllProductsPage />} />
             <Route path="/reports" element={<ReportsPage />} />
