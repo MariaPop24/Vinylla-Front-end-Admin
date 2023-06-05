@@ -97,14 +97,21 @@ const ViewReportModal = ({
           )
         )}
         <div className="view-report--footer">
-          <span className="view-report--warning">
-            *if you consider this reporting reason to be valid, the author will
-            receive a banning warning
-          </span>
-          <div className="view-report--btn-container">
-            <Button className="btn-primary-style" name="invalidate" />
-            <Button className="btn-primary-style" name="validate" />
-          </div>
+          {report &&
+            (report.resolved ? (
+              <>
+                <span className="view-report--warning">
+                  *if you consider this reporting reason to be valid, the author
+                  will receive a banning warning
+                </span>
+                <div className="view-report--btn-container">
+                  <Button className="btn-primary-style" name="invalidate" />
+                  <Button className="btn-primary-style" name="validate" />
+                </div>
+              </>
+            ) : (
+              <span className="view-report--resolved">already resolved</span>
+            ))}
         </div>
       </div>
     </Modal>
