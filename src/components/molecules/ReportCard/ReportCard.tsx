@@ -23,14 +23,16 @@ const ReportCard = ({
 
   const handleViewReport = async () => {
     setViewReportModal(true);
-    try {
-      const response = await axios.put(
-        `http://localhost:8000/api/reports/markAsRead/${item._id}`
-      );
-      setSeen(true);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
+    setSeen(true);
+    if (!item.seen) {
+      try {
+        const response = await axios.put(
+          `http://localhost:8000/api/reports/markAsRead/${item._id}`
+        );
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
