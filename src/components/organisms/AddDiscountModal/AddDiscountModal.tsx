@@ -12,6 +12,9 @@ import { InputType } from "../../../enums/InputType";
 import { ButtonType } from "../../../enums/ButtonType";
 import { FormattedMessage } from "react-intl";
 import axios from "axios";
+import { InboxTitle } from "../../../constants/inboxTitle";
+import { InboxContent } from "../../../constants/inboxContent";
+import { BeatLoader } from "react-spinners";
 
 let initialValues: DiscountInterface = {
   code: "",
@@ -39,21 +42,30 @@ const AddDiscountModal = ({
       ? new Date(defaultValues.endDate)
       : new Date()
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async () => {
     try {
+      setIsLoading(true);
       if (defaultValues) {
-        const response = await axios.put(
+        await axios.put(
           `http://localhost:8000/api/discounts/editDiscount/${defaultValues._id}`,
           { ...values }
         );
       } else {
-        const response = await axios.post(
-          "http://localhost:8000/api/discounts/postDiscount",
-          { ...values }
+        await axios.post("http://localhost:8000/api/discounts/postDiscount", {
+          ...values,
+        });
+        await axios.post(
+          "http://localhost:8000/api/inboxItems/postEveryUserInboxItem",
+          {
+            title: InboxTitle[2],
+            content: `Here's a new discount code for you to enjoy! ${values.code} (-${values.value}%) You can use it during checkout to avail of the discount. Available from ${values.startDate} from ${values.endDate}`,
+          }
         );
       }
 
+      setIsLoading(false);
       setIsModalDisplayed(false);
       fetchDiscounts();
     } catch (error) {}
@@ -184,12 +196,18 @@ const AddDiscountModal = ({
               )}
             </span>
           </div>
-          <Button
-            style={{ height: "4rem", width: "40%", alignSelf: "center" }}
-            type={ButtonType.Submit}
-            name={<FormattedMessage id="pages.signup.button" />}
-            className="btn-secondary-style"
-          />
+          {isLoading ? (
+            <div className="view-report--spinner">
+              <BeatLoader />
+            </div>
+          ) : (
+            <Button
+              style={{ height: "4rem", width: "40%", alignSelf: "center" }}
+              type={ButtonType.Submit}
+              name={<FormattedMessage id="pages.signup.button" />}
+              className="btn-secondary-style"
+            />
+          )}
         </form>
       </div>
     </Modal>
