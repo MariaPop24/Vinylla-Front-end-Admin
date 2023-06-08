@@ -25,28 +25,22 @@ const ViewReportModal = ({
   const handleValidate = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/inboxItems/postInboxItem",
-        { user: report.author, title: InboxTitle[1], content: InboxContent[2] }
-      );
-      console.log(response);
-      const response1 = await axios.put(
+      await axios.post("http://localhost:8000/api/inboxItems/postInboxItem", {
+        user: report.author,
+        title: InboxTitle[1],
+        content: InboxContent[2],
+      });
+      await axios.put(
         `http://localhost:8000/api/users/reportUser/${report.author}`
       );
-      console.log(response1);
-      const response2 = await axios.post(
-        "http://localhost:8000/api/inboxItems/postInboxItem",
-        {
-          user: report.reporter,
-          title: InboxTitle[0],
-          content: InboxContent[0],
-        }
-      );
-      console.log(response2);
-      const response3 = await axios.put(
+      await axios.post("http://localhost:8000/api/inboxItems/postInboxItem", {
+        user: report.reporter,
+        title: InboxTitle[0],
+        content: InboxContent[0],
+      });
+      await axios.put(
         `http://localhost:8000/api/reports/markAsResolved/${report._id}`
       );
-      console.log(response3);
       setIsLoading(false);
       setIsModalDisplayed(false);
       fetchReports();
@@ -58,25 +52,18 @@ const ViewReportModal = ({
   const handleInvalidate = async () => {
     setIsLoading(true);
     try {
-      const response3 = await axios.put(
+      await axios.put(
         `http://localhost:8000/api/reports/markAsResolved/${report._id}`
       );
-      console.log(response3);
-      const response2 = await axios.post(
-        "http://localhost:8000/api/inboxItems/postInboxItem",
-        {
-          user: report.reporter,
-          title: InboxTitle[0],
-          content: InboxContent[1],
-        }
-      );
-      console.log(response2);
+      await axios.post("http://localhost:8000/api/inboxItems/postInboxItem", {
+        user: report.reporter,
+        title: InboxTitle[0],
+        content: InboxContent[1],
+      });
       setIsLoading(false);
       setIsModalDisplayed(false);
       fetchReports();
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const fetchReportData = async () => {
@@ -94,7 +81,6 @@ const ViewReportModal = ({
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      console.error(error);
     }
   };
 
