@@ -6,6 +6,8 @@ import axios from "axios";
 import { formatDateDiscount } from "../../../utils/formatDateDiscount";
 import { BeatLoader } from "react-spinners";
 import Review from "../../molecules/Review/Review";
+import { InboxTitle } from "../../../constants/inboxTitle";
+import { InboxContent } from "../../../constants/inboxContent";
 
 const ViewReportModal = ({
   setIsModalDisplayed,
@@ -19,6 +21,63 @@ const ViewReportModal = ({
   const [isLoading, setIsLoading] = useState(false);
   const [report, setReport] = useState<any>();
   const [review, setReview] = useState<any>();
+
+  const handleValidate = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/inboxItems/postInboxItem",
+        { user: report.author, title: InboxTitle[1], content: InboxContent[2] }
+      );
+      console.log(response);
+      const response1 = await axios.put(
+        `http://localhost:8000/api/users/reportUser/${report.author}`
+      );
+      console.log(response1);
+      const response2 = await axios.post(
+        "http://localhost:8000/api/inboxItems/postInboxItem",
+        {
+          user: report.reporter,
+          title: InboxTitle[0],
+          content: InboxContent[0],
+        }
+      );
+      console.log(response2);
+      const response3 = await axios.put(
+        `http://localhost:8000/api/reports/markAsResolved/${report._id}`
+      );
+      console.log(response3);
+      setIsLoading(false);
+      setIsModalDisplayed(false);
+      fetchReports();
+    } catch (error) {
+      setIsLoading(false);
+    }
+  };
+
+  const handleInvalidate = async () => {
+    setIsLoading(true);
+    try {
+      const response3 = await axios.put(
+        `http://localhost:8000/api/reports/markAsResolved/${report._id}`
+      );
+      console.log(response3);
+      const response2 = await axios.post(
+        "http://localhost:8000/api/inboxItems/postInboxItem",
+        {
+          user: report.reporter,
+          title: InboxTitle[0],
+          content: InboxContent[1],
+        }
+      );
+      console.log(response2);
+      setIsLoading(false);
+      setIsModalDisplayed(false);
+      fetchReports();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchReportData = async () => {
     try {
@@ -104,8 +163,16 @@ const ViewReportModal = ({
                   will receive a banning warning
                 </span>
                 <div className="view-report--btn-container">
-                  <Button className="btn-primary-style" name="invalidate" />
-                  <Button className="btn-primary-style" name="validate" />
+                  <Button
+                    className="btn-primary-style"
+                    name="invalidate"
+                    onClick={handleInvalidate}
+                  />
+                  <Button
+                    className="btn-primary-style"
+                    name="validate"
+                    onClick={handleValidate}
+                  />
                 </div>
               </>
             ) : (

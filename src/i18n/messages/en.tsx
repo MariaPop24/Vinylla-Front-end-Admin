@@ -14,6 +14,7 @@ export default {
     "organisms.delete-modal.question": "are you sure about deleting?",
     "organisms.delete-modal.no-btn": "no",
     "organisms.delete-modal.yes-btn": "yes",
+    "pages.add-product.title": "here is where you can add a product",
     "pages.allProducts.add-btn": "Add product",
     "pages.allProducts.no-results": "no items found",
     "pages.allProducts.see-more": "see more",
