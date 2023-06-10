@@ -40,7 +40,7 @@ const AllProductsPage = () => {
       console.error(error);
     }
   };
-
+  ///
   const fetchProducts = async () => {
     try {
       setIsLoading(true);
