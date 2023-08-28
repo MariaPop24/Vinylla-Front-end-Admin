@@ -22,12 +22,6 @@ const LandingPage = () => {
         <div className="landing-page--buttons">
           <Button
             className="btn-primary-style"
-            name={<FormattedMessage id="pages.landingPage.signup-btn" />}
-            onClick={handleSignup}
-          />
-          <Or />
-          <Button
-            className="btn-primary-style"
             name={<FormattedMessage id="pages.landingPage.login-btn" />}
             onClick={handleLogin}
           />

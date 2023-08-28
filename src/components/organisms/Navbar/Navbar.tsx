@@ -55,6 +55,14 @@ const Navbar = () => {
         iconLeft={require("../../../assets/icons/DiscountIcon.png")}
         onClick={handleDiscountsPage}
       />
+      <Button
+        className="menu-option"
+        iconClassName="menu-icon"
+        name="orders"
+        hasIconLeft={true}
+        iconLeft={require("../../../assets/icons/OrderIcon.png")}
+        onClick={handleDiscountsPage}
+      />
       <Avatar />
     </nav>
   );
