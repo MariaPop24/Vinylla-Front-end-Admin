@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Avatar.scss";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import useClickOutside from "../../../utils/useClickOutside";
 
 const Avatar = ({}: Props) => {
+  const menuRef = useRef(null);
   const userData = localStorage.getItem("usersData");
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const navigate = useNavigate();
@@ -16,6 +18,10 @@ const Avatar = ({}: Props) => {
     localStorage.removeItem("usersData");
     navigate("/");
   };
+
+  useClickOutside(menuRef, () => {
+    setIsMenuOpened(false);
+  });
 
   let userName = null;
   let email = null;
@@ -36,7 +42,7 @@ const Avatar = ({}: Props) => {
         {firstLetters && firstLetters.toUpperCase()}
       </div>
       {isMenuOpened && (
-        <div className="navbar--content animate">
+        <div className="navbar--content animate" ref={menuRef}>
           <div className="navbar--email">{email}</div>
           <Button
             name="log out"
