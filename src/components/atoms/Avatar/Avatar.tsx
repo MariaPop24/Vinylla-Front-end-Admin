@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import "./Avatar.scss";
 import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Avatar = ({}: Props) => {
   const userData = localStorage.getItem("usersData");
   const [isMenuOpened, setIsMenuOpened] = useState(false);
+  const navigate = useNavigate();
 
   const handleProfileOptions = () => {
     setIsMenuOpened(!isMenuOpened);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("usersData");
+    navigate("/");
   };
 
   let userName = null;
@@ -31,7 +38,11 @@ const Avatar = ({}: Props) => {
       {isMenuOpened && (
         <div className="navbar--content animate">
           <div className="navbar--email">{email}</div>
-          <Button name="log out" className="btn-primary-style" />
+          <Button
+            name="log out"
+            className="btn-primary-style"
+            onClick={handleLogout}
+          />
         </div>
       )}
     </div>
