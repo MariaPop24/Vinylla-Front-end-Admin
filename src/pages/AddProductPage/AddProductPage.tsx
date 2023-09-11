@@ -128,6 +128,18 @@ const AddProductPage = () => {
       return updatedImages;
     });
   };
+  const handleAwardsChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = e.target;
+
+    setAwards((prevAwards) => {
+      const updatedAwards = [...prevAwards];
+      updatedAwards[index] = { award: value }; // Update the specific object
+      return updatedAwards;
+    });
+  };
 
   return (
     <div className="add-product--container">
@@ -297,8 +309,8 @@ const AddProductPage = () => {
             <TextInput
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
-              value={input.value}
-              onChange={(e: any) => handleChange(index, e)}
+              value={input.award}
+              onChange={(e: any) => handleAwardsChange(index, e)}
             />
 
             {index !== awards.length - 1 && (
