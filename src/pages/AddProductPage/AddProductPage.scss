@@ -28,12 +28,25 @@
     width: 40%;
   }
 
+  &--field-song {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+  }
+  &--field-song * {
+    margin-right: 1rem;
+  }
+
   &--label {
     margin-right: 3rem;
   }
 
+  &--label-song {
+    margin-right: 1rem;
+  }
+
   &--input {
-    padding: 3%;
+    padding: 3% 0;
     color: $color-4;
   }
 
@@ -48,4 +61,13 @@
     outline: none;
     border: 1px solid $color-5;
   }
+
+  &--link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.clasa1 {
+  animation: cart 0.7s forwards;
 }

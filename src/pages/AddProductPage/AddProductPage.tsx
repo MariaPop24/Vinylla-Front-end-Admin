@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./AddProductPage.scss";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
 import TextInput from "../../components/atoms/TextInput/TextInput";
+import Button from "../../components/atoms/Button/Button";
+import { ButtonType } from "../../enums/ButtonType";
+import { InputType } from "../../enums/InputType";
+import { FormattedMessage } from "react-intl";
 
 const AddProductPage = () => {
   const [inputs, setInputs] = useState([{ value: "" }]);
@@ -58,23 +62,51 @@ const AddProductPage = () => {
         <span className="add-product--label">description*: </span>
         <textarea className="add-product--textarea" maxLength={3000}></textarea>
       </div>
+      <div className="add-product--section-text">presentation images</div>
       <form onSubmit={handleSubmit}>
         {inputs.map((input: any, index: number) => (
           <div key={index}>
-            <input
-              type="text"
-              value={input.value}
-              onChange={(e) => handleChange(index, e)}
-            />
+            <div className="add-product--field-song clasa1">
+              <span className="add-product--label-song">song name*: </span>
+              <TextInput
+                inputClassName="input-primary-style add-product--input"
+                type={InputType.TEXT}
+                value={input.value}
+                onChange={(e: any) => handleChange(index, e)}
+              />
+              <span className="add-product--label-song">minutes*: </span>
+              <TextInput
+                inputClassName="input-primary-style add-product--input"
+                type={InputType.NUMBER}
+                value={input.value}
+                onChange={(e: any) => handleChange(index, e)}
+              />
+              <span className="add-product--label-song">seconds*: </span>
+              <TextInput
+                inputClassName="input-primary-style add-product--input"
+                type={InputType.NUMBER}
+                value={input.value}
+                onChange={(e: any) => handleChange(index, e)}
+              />
+              {index !== inputs.length - 1 && (
+                <a
+                  className="add-product--link"
+                  onClick={() => handleRemoveInput(index)}
+                >
+                  remove
+                </a>
+              )}
+            </div>
+
             {index === inputs.length - 1 && (
-              <button type="button" onClick={handleAddInput}>
-                Add Input
-              </button>
-            )}
-            {index !== inputs.length - 1 && (
-              <button type="button" onClick={() => handleRemoveInput(index)}>
-                Remove
-              </button>
+              <Button
+                className="clasa1 btn-secondary-style "
+                iconClassName="icon"
+                hasIconLeft={true}
+                iconLeft={require("../../assets/icons/PlusIcon.png")}
+                name={<FormattedMessage id="pages.allProducts.add-btn" />}
+                onClick={handleAddInput}
+              />
             )}
           </div>
         ))}
