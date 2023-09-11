@@ -44,20 +44,16 @@ let initialValues = {
 };
 
 const AddProductPage = () => {
-  const [inputs, setInputs] = useState([{ value: "" }]);
+  const [inputs, setInputs] = useState([
+    { song: "", minutes: "", seconds: "" },
+  ]);
   const [details, setDetails] = useState<Detail[]>([{ label: "", value: "" }]);
   const [images, setImages] = useState([{ link: "" }]);
   const [awards, setAwards] = useState([{ award: "" }]);
 
-  const handleChange = (index: any, e: any) => {
-    const newInputs = [...inputs];
-    newInputs[index].value = e.target.value;
-    setInputs(newInputs);
-  };
-
   const handleAddInput = () => {
     const newInputs = [...inputs];
-    newInputs.push({ value: "" });
+    newInputs.push({ song: "", minutes: "", seconds: "" });
     setInputs(newInputs);
   };
 
@@ -101,6 +97,25 @@ const AddProductPage = () => {
     e.preventDefault();
     // Perform form submission or validation logic here
     console.log(inputs);
+  };
+
+  const handleSongsChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setInputs((prevInputs) => {
+      const updatedInputs = [...prevInputs];
+      updatedInputs[index] = {
+        ...updatedInputs[index],
+        [name]:
+          name === "minutes" || name === "seconds"
+            ? parseInt(value, 10)
+            : value,
+      };
+      return updatedInputs;
+    });
   };
 
   const handleDetailsChange = (
@@ -176,24 +191,27 @@ const AddProductPage = () => {
             <div className="add-product--field-song clasa1">
               <span className="add-product--label-song">song name*: </span>
               <TextInput
+                name="song"
                 inputClassName="input-primary-style add-product--input"
                 type={InputType.TEXT}
-                value={input.value}
-                onChange={(e: any) => handleChange(index, e)}
+                value={input.song}
+                onChange={(e: any) => handleSongsChange(index, e)}
               />
               <span className="add-product--label-song">minutes*: </span>
               <TextInput
+                name="minutes"
                 inputClassName="input-primary-style add-product--input"
                 type={InputType.NUMBER}
-                value={input.value}
-                onChange={(e: any) => handleChange(index, e)}
+                value={input.minutes}
+                onChange={(e: any) => handleSongsChange(index, e)}
               />
               <span className="add-product--label-song">seconds*: </span>
               <TextInput
+                name="seconds"
                 inputClassName="input-primary-style add-product--input"
                 type={InputType.NUMBER}
-                value={input.value}
-                onChange={(e: any) => handleChange(index, e)}
+                value={input.seconds}
+                onChange={(e: any) => handleSongsChange(index, e)}
               />
               {index !== inputs.length - 1 && (
                 <a
