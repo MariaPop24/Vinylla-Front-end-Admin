@@ -30,28 +30,31 @@ const AddProductPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {inputs.map((input: any, index: number) => (
-        <div key={index}>
-          <input
-            type="text"
-            value={input.value}
-            onChange={(e) => handleChange(index, e)}
-          />
-          {index === inputs.length - 1 && (
-            <button type="button" onClick={handleAddInput}>
-              Add Input
-            </button>
-          )}
-          {index !== inputs.length - 1 && (
-            <button type="button" onClick={() => handleRemoveInput(index)}>
-              Remove
-            </button>
-          )}
-        </div>
-      ))}
-      <button type="submit">Submit</button>
-    </form>
+    <div className="add-product--container">
+      <TextBlock text="add new product to the store" />
+      <form onSubmit={handleSubmit}>
+        {inputs.map((input: any, index: number) => (
+          <div key={index}>
+            <input
+              type="text"
+              value={input.value}
+              onChange={(e) => handleChange(index, e)}
+            />
+            {index === inputs.length - 1 && (
+              <button type="button" onClick={handleAddInput}>
+                Add Input
+              </button>
+            )}
+            {index !== inputs.length - 1 && (
+              <button type="button" onClick={() => handleRemoveInput(index)}>
+                Remove
+              </button>
+            )}
+          </div>
+        ))}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 };
 

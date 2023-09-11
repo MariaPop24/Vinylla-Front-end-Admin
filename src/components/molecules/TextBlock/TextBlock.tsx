@@ -2,16 +2,20 @@ import React from "react";
 import "./TextBlock.scss";
 import { FormattedMessage } from "react-intl";
 
-const TextBlock = ({ messageId }: Props) => {
+const TextBlock = ({ messageId, text, id, ref }: Props) => {
   return (
-    <div id="text-block-container" className="fadeIn-animate">
-      <FormattedMessage id={messageId} />
+    <div id={id} className="animate text-block-container" ref={ref}>
+      {messageId && <FormattedMessage id={messageId} />}
+      {text && text}
     </div>
   );
 };
 
 type Props = {
-  messageId: string;
+  messageId?: string;
+  text?: string;
+  id?: any;
+  ref?: any;
 };
 
 export default TextBlock;

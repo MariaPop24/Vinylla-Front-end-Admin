@@ -1,12 +1,15 @@
 @import "../../../styles/global-colors";
 @import "../../../styles/global-animations";
 
-#text-block-container {
+.text-block-container {
   background-color: $color-1;
   font-size: 1.5rem;
   text-align: start;
   width: 100%;
   padding: 1% 2rem;
   box-sizing: border-box;
-  animation: fadeIn 0.7s forwards;
+}
+
+.animate {
+  animation: fadeIn 2s forwards;
 }
