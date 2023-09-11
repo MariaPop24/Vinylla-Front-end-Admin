@@ -1,5 +1,6 @@
 @import "../../../styles/global-colors";
 @import "../../../styles/global-fonts";
+@import "../../../styles/global-animations";
 
 .avatar {
   &--container {
@@ -16,4 +17,31 @@
     color: $color-white;
     cursor: pointer;
   }
+}
+
+.navbar {
+  &--container {
+    position: relative;
+  }
+
+  &--content {
+    position: absolute;
+    background-color: $color-white;
+    top: 6rem;
+    right: -2rem;
+    padding: 1rem;
+    border: 1px solid $color-2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--email {
+    font-family: $secondary-font;
+    color: $color-4;
+    margin-bottom: 1rem;
+  }
+}
+
+.animate {
+  animation: fadeIn 0.7s forwards;
 }

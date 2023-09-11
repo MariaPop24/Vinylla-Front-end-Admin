@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Avatar.scss";
+import Button from "../Button/Button";
 
-const Avatar = ({ onClick }: Props) => {
+const Avatar = ({}: Props) => {
   const userData = localStorage.getItem("usersData");
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
+
+  const handleProfileOptions = () => {
+    setIsMenuOpened(!isMenuOpened);
+  };
+
   let userName = null;
+  let email = null;
   if (userData) {
     userName = JSON.parse(userData);
+    console.log(userName);
+    email = userName.email;
     userName = userName.firstName + " " + userName.lastName;
   }
   let firstLetters;
@@ -14,8 +24,16 @@ const Avatar = ({ onClick }: Props) => {
     firstLetters = names[0][0] + names[1][0];
   }
   return (
-    <div onClick={onClick} className="avatar--container">
-      {firstLetters && firstLetters.toUpperCase()}
+    <div className="navbar--container">
+      <div onClick={handleProfileOptions} className="avatar--container">
+        {firstLetters && firstLetters.toUpperCase()}
+      </div>
+      {isMenuOpened && (
+        <div className="navbar--content animate">
+          <div className="navbar--email">{email}</div>
+          <Button name="log out" className="btn-primary-style" />
+        </div>
+      )}
     </div>
   );
 };

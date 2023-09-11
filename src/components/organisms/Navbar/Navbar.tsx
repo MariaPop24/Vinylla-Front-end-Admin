@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.scss";
 import { FormattedMessage } from "react-intl";
 import Button from "../../atoms/Button/Button";
@@ -15,12 +15,15 @@ const Navbar = () => {
   const handleUsersPage = () => {
     navigate("/users");
   };
+
   const handleReportsPage = () => {
     navigate("/reports");
   };
+
   const handleDiscountsPage = () => {
     navigate("/discounts");
   };
+
   return (
     <nav>
       <Button
