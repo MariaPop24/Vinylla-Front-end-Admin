@@ -18,7 +18,7 @@ const TextInput = ({
   max,
 }: Props) => {
   return (
-    <div className="text-input-container">
+    <div>
       <input
         id={id}
         name={name}

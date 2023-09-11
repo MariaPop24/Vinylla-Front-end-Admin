@@ -5,4 +5,47 @@
   &--container {
     padding: 3% 5%;
   }
+
+  &--section-text {
+    display: flex;
+    padding: 2% 0%;
+    font-size: 1.5rem;
+    color: $color-5;
+    align-items: center;
+  }
+
+  &--section-text::after {
+    content: "";
+    flex: 1;
+    border-bottom: 0.1rem solid $color-2;
+    margin-left: 1rem;
+  }
+
+  &--field {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    width: 40%;
+  }
+
+  &--label {
+    margin-right: 3rem;
+  }
+
+  &--input {
+    padding: 3%;
+    color: $color-4;
+  }
+
+  &--textarea {
+    resize: none;
+    color: $color-4;
+    font-family: $secondary-font;
+    border: 1px solid $color-7;
+  }
+
+  &--textarea:focus {
+    outline: none;
+    border: 1px solid $color-5;
+  }
 }

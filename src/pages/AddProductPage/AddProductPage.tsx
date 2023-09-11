@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AddProductPage.scss";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
+import TextInput from "../../components/atoms/TextInput/TextInput";
 
 const AddProductPage = () => {
   const [inputs, setInputs] = useState([{ value: "" }]);
@@ -32,6 +33,31 @@ const AddProductPage = () => {
   return (
     <div className="add-product--container">
       <TextBlock text="add new product to the store" />
+      <div className="add-product--section-text">general details</div>
+      <div className="add-product--field">
+        <span className="add-product--label">name of the album*: </span>
+        <TextInput inputClassName="input-primary-style add-product--input" />
+      </div>
+      <div className="add-product--field">
+        <span className="add-product--label">artist name*: </span>
+        <TextInput inputClassName="input-primary-style add-product--input" />
+      </div>
+      <div className="add-product--field">
+        <span className="add-product--label">release date*: </span>
+        <TextInput inputClassName="input-primary-style add-product--input" />
+      </div>
+      <div className="add-product--field">
+        <span className="add-product--label">price (in USD)*: </span>
+        <TextInput inputClassName="input-primary-style add-product--input" />
+      </div>
+      <div className="add-product--field">
+        <span className="add-product--label">genre*: </span>
+        <TextInput inputClassName="input-primary-style add-product--input" />
+      </div>
+      <div className="add-product--field">
+        <span className="add-product--label">description*: </span>
+        <textarea className="add-product--textarea" maxLength={3000}></textarea>
+      </div>
       <form onSubmit={handleSubmit}>
         {inputs.map((input: any, index: number) => (
           <div key={index}>
