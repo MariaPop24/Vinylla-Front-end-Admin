@@ -116,6 +116,19 @@ const AddProductPage = () => {
     });
   };
 
+  const handleImagesChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = e.target;
+
+    setImages((prevImages) => {
+      const updatedImages = [...prevImages];
+      updatedImages[index] = { link: value }; // Update the specific object
+      return updatedImages;
+    });
+  };
+
   return (
     <div className="add-product--container">
       <TextBlock text="add new product to the store" />
@@ -201,8 +214,8 @@ const AddProductPage = () => {
             <TextInput
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
-              value={input.value}
-              onChange={(e: any) => handleChange(index, e)}
+              value={input.link}
+              onChange={(e: any) => handleImagesChange(index, e)}
             />
 
             {index !== images.length - 1 && (
