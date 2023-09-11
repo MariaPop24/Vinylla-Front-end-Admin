@@ -5,11 +5,47 @@ import TextInput from "../../components/atoms/TextInput/TextInput";
 import Button from "../../components/atoms/Button/Button";
 import { ButtonType } from "../../enums/ButtonType";
 import { InputType } from "../../enums/InputType";
-import { FormattedMessage } from "react-intl";
+
+interface Detail {
+  label: string;
+  value: string;
+}
+
+let initialValues = {
+  title: "",
+  artist: "",
+  images: [""],
+  releaseDate: new Date(),
+  price: 0,
+  genre: "",
+  songs: [
+    {
+      title: "",
+      length: {
+        minutes: 0,
+        seconds: 0,
+      },
+    },
+  ],
+  description: "",
+  details: [
+    {
+      label: "",
+      value: "",
+    },
+  ],
+  awards: [],
+  stock: {
+    small: 0,
+    medium: 0,
+    large: 0,
+  },
+  reviews: [],
+};
 
 const AddProductPage = () => {
   const [inputs, setInputs] = useState([{ value: "" }]);
-  const [details, setDetails] = useState([{ label: "", value: "" }]);
+  const [details, setDetails] = useState<Detail[]>([{ label: "", value: "" }]);
   const [images, setImages] = useState([{ link: "" }]);
   const [awards, setAwards] = useState([{ award: "" }]);
 
@@ -65,6 +101,19 @@ const AddProductPage = () => {
     e.preventDefault();
     // Perform form submission or validation logic here
     console.log(inputs);
+  };
+
+  const handleDetailsChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+
+    setDetails((prevDetails) => {
+      const updatedDetails = [...prevDetails];
+      updatedDetails[index] = { ...updatedDetails[index], [name]: value };
+      return updatedDetails;
+    });
   };
 
   return (
@@ -186,17 +235,23 @@ const AddProductPage = () => {
           <div className="add-product--field-song clasa1">
             <span className="add-product--label-song">label*: </span>
             <TextInput
+              name="label"
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
-              value={input.value}
-              onChange={(e: any) => handleChange(index, e)}
+              value={input.label}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleDetailsChange(index, e)
+              }
             />
             <span className="add-product--label-song">value*: </span>
             <TextInput
+              name="value"
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
               value={input.value}
-              onChange={(e: any) => handleChange(index, e)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleDetailsChange(index, e)
+              }
             />
 
             {index !== details.length - 1 && (
