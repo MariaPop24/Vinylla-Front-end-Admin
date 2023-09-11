@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./AllProductsPage.scss";
-import Navbar from "../../components/organisms/Navbar/Navbar";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/atoms/Button/Button";
@@ -74,7 +73,6 @@ const AllProductsPage = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.allProducts.title" />
         <div className="all-products--search">

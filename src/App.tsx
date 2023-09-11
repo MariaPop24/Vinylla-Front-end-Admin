@@ -11,12 +11,14 @@ import UsersPage from "./pages/UsersPage/UsersPage";
 import ReportsPage from "./pages/ReportsPage/ReportsPage";
 import DiscountsPage from "./pages/DiscountsPage/DiscountsPage";
 import AddProductPage from "./pages/AddProductPage/AddProductPage";
+import Navbar from "./components/organisms/Navbar/Navbar";
 
 const App = () => {
   return (
     <BrowserRouter>
       <I18nProvider locale={LOCALES.ENGLISH}>
         <div className="App">
+          <Navbar />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-product" element={<AddProductPage />} />

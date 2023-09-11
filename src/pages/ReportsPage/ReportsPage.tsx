@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./ReportsPage.scss";
-import Navbar from "../../components/organisms/Navbar/Navbar";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
 import { FormattedMessage } from "react-intl";
@@ -40,7 +39,6 @@ const ReportsPage = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.reports.title" />
         <div className="all-product--albums">

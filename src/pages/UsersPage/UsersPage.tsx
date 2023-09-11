@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./UsersPage.scss";
-import Navbar from "../../components/organisms/Navbar/Navbar";
 import axios from "axios";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
 import Button from "../../components/atoms/Button/Button";
@@ -70,7 +69,6 @@ const UsersPage = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.users.title" />
         <div className="all-products--search">

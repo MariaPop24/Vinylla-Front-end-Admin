@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./DiscountsPage.scss";
-import Navbar from "../../components/organisms/Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
@@ -72,7 +71,6 @@ const DiscountsPage = () => {
   }, [user, navigate]);
   return (
     <div>
-      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.discounts.title" />
         <div className="all-products--search">
