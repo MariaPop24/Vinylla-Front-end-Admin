@@ -66,8 +66,22 @@
     text-decoration: underline;
     cursor: pointer;
   }
+
+  &--buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid $color-2;
+  }
 }
 
 .clasa1 {
   animation: cart 0.7s forwards;
+}
+
+.clasa2 {
+  height: 2.5rem;
+  width: auto;
+  padding: 1% 3%;
 }
