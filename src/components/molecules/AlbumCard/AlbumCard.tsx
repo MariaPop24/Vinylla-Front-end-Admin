@@ -27,14 +27,6 @@ const AlbumCard = ({
         {item.title + " - " + item.artist}
       </span>
       <div className="album-card--buttons-container">
-        <Tooltip text={<FormattedMessage id="pages.allProducts.see-more" />}>
-          <Button
-            className="album-card--button"
-            iconClassName="album-card--icons"
-            hasIconOnly={true}
-            icon={require("../../../assets/icons/EyeIcon.png")}
-          />
-        </Tooltip>
         <Tooltip text={<FormattedMessage id="pages.allProducts.delete" />}>
           <Button
             className="album-card--button"
