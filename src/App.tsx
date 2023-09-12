@@ -12,6 +12,7 @@ import ReportsPage from "./pages/ReportsPage/ReportsPage";
 import DiscountsPage from "./pages/DiscountsPage/DiscountsPage";
 import AddProductPage from "./pages/AddProductPage/AddProductPage";
 import Navbar from "./components/organisms/Navbar/Navbar";
+import OrdersPage from "./pages/OrdersPage/OrdersPage";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/discounts" element={<DiscountsPage />} />
             <Route path="/products" element={<AllProductsPage />} />
             <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/orders" element={<OrdersPage />} />
             <Route path="/users" element={<UsersPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />

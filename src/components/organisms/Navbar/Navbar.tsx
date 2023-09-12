@@ -24,6 +24,10 @@ const Navbar = () => {
     navigate("/discounts");
   };
 
+  const handleOrdersPage = () => {
+    navigate("/orders");
+  };
+
   return (
     <nav>
       <Button
@@ -64,7 +68,7 @@ const Navbar = () => {
         name="orders"
         hasIconLeft={true}
         iconLeft={require("../../../assets/icons/OrderIcon.png")}
-        onClick={handleDiscountsPage}
+        onClick={handleOrdersPage}
       />
       <Avatar />
     </nav>
