@@ -5,6 +5,11 @@ import TextInput from "../../components/atoms/TextInput/TextInput";
 import Button from "../../components/atoms/Button/Button";
 import { ButtonType } from "../../enums/ButtonType";
 import { InputType } from "../../enums/InputType";
+import axios from "axios";
+import { BeatLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import albumValidationSchema from "../../schemas/productSchema";
 
 interface Detail {
   label: string;
@@ -50,6 +55,8 @@ const AddProductPage = () => {
   const [details, setDetails] = useState<Detail[]>([{ label: "", value: "" }]);
   const [images, setImages] = useState([{ link: "" }]);
   const [awards, setAwards] = useState([{ award: "" }]);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleAddInput = () => {
     const newInputs = [...inputs];
@@ -156,33 +163,90 @@ const AddProductPage = () => {
     });
   };
 
+  const onSubmit = async (values: any) => {
+    try {
+      setIsLoading(true);
+
+      await axios.post("http://localhost:8000/api/albums/postAlbum", {
+        ...values,
+      });
+
+      setIsLoading(false);
+      navigate("/products");
+    } catch (error) {}
+  };
+
+  const { values, errors, touched, handleBlur, handleChange, setFieldValue } =
+    useFormik({
+      initialValues,
+      validationSchema: albumValidationSchema,
+      onSubmit,
+    });
+
   return (
     <div className="add-product--container">
       <TextBlock text="add new product to the store" />
       <div className="add-product--section-text">general details</div>
       <div className="add-product--field">
         <span className="add-product--label">name of the album*: </span>
-        <TextInput inputClassName="input-primary-style add-product--input" />
+        <TextInput
+          onChange={handleChange}
+          placeholder="write here..."
+          id="title"
+          value={values.title}
+          inputClassName="input-primary-style add-product--input"
+        />
       </div>
       <div className="add-product--field">
         <span className="add-product--label">artist name*: </span>
-        <TextInput inputClassName="input-primary-style add-product--input" />
+        <TextInput
+          id="artist"
+          onChange={handleChange}
+          placeholder="write here..."
+          value={values.artist}
+          inputClassName="input-primary-style add-product--input"
+        />
       </div>
       <div className="add-product--field">
         <span className="add-product--label">release date*: </span>
-        <TextInput inputClassName="input-primary-style add-product--input" />
+        <TextInput
+          id="releaseDate"
+          onChange={handleChange}
+          placeholder="write here..."
+          value={values.releaseDate}
+          inputClassName="input-primary-style add-product--input"
+        />
       </div>
       <div className="add-product--field">
         <span className="add-product--label">price (in USD)*: </span>
-        <TextInput inputClassName="input-primary-style add-product--input" />
+        <TextInput
+          id="price"
+          onChange={handleChange}
+          placeholder="write here..."
+          value={values.price}
+          inputClassName="input-primary-style add-product--input"
+        />
       </div>
       <div className="add-product--field">
         <span className="add-product--label">genre*: </span>
-        <TextInput inputClassName="input-primary-style add-product--input" />
+        <TextInput
+          id="genre"
+          onChange={handleChange}
+          value={values.genre}
+          placeholder="write here..."
+          inputClassName="input-primary-style add-product--input"
+        />
       </div>
       <div className="add-product--field">
         <span className="add-product--label">description*: </span>
-        <textarea className="add-product--textarea" maxLength={3000}></textarea>
+        <textarea
+          id="description"
+          onChange={handleChange}
+          value={values.description}
+          placeholder="write here..."
+          className="add-product--textarea"
+          maxLength={3000}
+        ></textarea>
       </div>
       <div className="add-product--section-text">track list</div>
       <form onSubmit={handleSubmit}>
@@ -191,6 +255,7 @@ const AddProductPage = () => {
             <div className="add-product--field-song clasa1">
               <span className="add-product--label-song">song name*: </span>
               <TextInput
+                placeholder="write here..."
                 name="song"
                 inputClassName="input-primary-style add-product--input"
                 type={InputType.TEXT}
@@ -199,6 +264,7 @@ const AddProductPage = () => {
               />
               <span className="add-product--label-song">minutes*: </span>
               <TextInput
+                placeholder="write here..."
                 name="minutes"
                 inputClassName="input-primary-style add-product--input"
                 type={InputType.NUMBER}
@@ -207,6 +273,7 @@ const AddProductPage = () => {
               />
               <span className="add-product--label-song">seconds*: </span>
               <TextInput
+                placeholder="write here..."
                 name="seconds"
                 inputClassName="input-primary-style add-product--input"
                 type={InputType.NUMBER}
@@ -242,6 +309,7 @@ const AddProductPage = () => {
           <div className="add-product--field-song clasa1">
             <span className="add-product--label-song">link*: </span>
             <TextInput
+              placeholder="write here..."
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
               value={input.link}
@@ -278,6 +346,7 @@ const AddProductPage = () => {
           <div className="add-product--field-song clasa1">
             <span className="add-product--label-song">label*: </span>
             <TextInput
+              placeholder="write here..."
               name="label"
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
@@ -288,6 +357,7 @@ const AddProductPage = () => {
             />
             <span className="add-product--label-song">value*: </span>
             <TextInput
+              placeholder="write here..."
               name="value"
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
@@ -325,6 +395,7 @@ const AddProductPage = () => {
           <div className="add-product--field-song clasa1">
             <span className="add-product--label-song">award name: </span>
             <TextInput
+              placeholder="write here..."
               inputClassName="input-primary-style add-product--input"
               type={InputType.TEXT}
               value={input.award}
@@ -359,11 +430,16 @@ const AddProductPage = () => {
           name="back"
           className="btn-secondary-style"
         />
-        <Button
-          type={ButtonType.Submit}
-          name="add product"
-          className="btn-primary-style clasa2"
-        />
+        {isLoading ? (
+          <BeatLoader />
+        ) : (
+          <Button
+            type={ButtonType.Submit}
+            name="add product"
+            className="btn-primary-style clasa2"
+            onClick={onSubmit}
+          />
+        )}
       </div>
     </div>
   );

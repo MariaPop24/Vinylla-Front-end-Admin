@@ -51,7 +51,7 @@ type Props = {
   htmlFor?: string;
   id?: string;
   name?: string;
-  value?: string | number;
+  value?: any;
   min?: number;
   max?: number;
 };
