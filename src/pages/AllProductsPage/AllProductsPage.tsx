@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 import axios from "axios";
 import AlbumCard from "../../components/molecules/AlbumCard/AlbumCard";
 import { BeatLoader } from "react-spinners";
+import Navbar from "../../components/organisms/Navbar/Navbar";
 
 const AllProductsPage = () => {
   const navigate = useNavigate();
@@ -73,6 +74,7 @@ const AllProductsPage = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.allProducts.title" />
         <div className="all-products--search">

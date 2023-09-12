@@ -10,6 +10,7 @@ import { BeatLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import albumValidationSchema from "../../schemas/productSchema";
+import Navbar from "../../components/organisms/Navbar/Navbar";
 
 interface Detail {
   label: string;
@@ -201,264 +202,267 @@ const AddProductPage = () => {
     });
 
   return (
-    <div className="add-product--container">
-      <TextBlock text="add new product to the store" />
-      <div className="add-product--section-text">general details</div>
-      <div className="add-product--field">
-        <span className="add-product--label">name of the album*: </span>
-        <TextInput
-          onChange={handleChange}
-          placeholder="write here..."
-          id="title"
-          value={values.title}
-          inputClassName="input-primary-style add-product--input"
-        />
-      </div>
-      <div className="add-product--field">
-        <span className="add-product--label">artist name*: </span>
-        <TextInput
-          id="artist"
-          onChange={handleChange}
-          placeholder="write here..."
-          value={values.artist}
-          inputClassName="input-primary-style add-product--input"
-        />
-      </div>
-      <div className="add-product--field">
-        <span className="add-product--label">release date*: </span>
-        <TextInput
-          id="releaseDate"
-          onChange={handleChange}
-          placeholder="write here..."
-          value={values.releaseDate}
-          inputClassName="input-primary-style add-product--input"
-        />
-      </div>
-      <div className="add-product--field">
-        <span className="add-product--label">price (in USD)*: </span>
-        <TextInput
-          id="price"
-          onChange={handleChange}
-          placeholder="write here..."
-          value={values.price}
-          inputClassName="input-primary-style add-product--input"
-        />
-      </div>
-      <div className="add-product--field">
-        <span className="add-product--label">genre*: </span>
-        <TextInput
-          id="genre"
-          onChange={handleChange}
-          value={values.genre}
-          placeholder="write here..."
-          inputClassName="input-primary-style add-product--input"
-        />
-      </div>
-      <div className="add-product--field">
-        <span className="add-product--label">description*: </span>
-        <textarea
-          id="description"
-          onChange={handleChange}
-          value={values.description}
-          placeholder="write here..."
-          className="add-product--textarea"
-          maxLength={3000}
-        ></textarea>
-      </div>
-      <div className="add-product--section-text">track list</div>
-      <form onSubmit={handleSubmit}>
-        {inputs.map((input: any, index: number) => (
+    <>
+      <Navbar />
+      <div className="add-product--container">
+        <TextBlock text="add new product to the store" />
+        <div className="add-product--section-text">general details</div>
+        <div className="add-product--field">
+          <span className="add-product--label">name of the album*: </span>
+          <TextInput
+            onChange={handleChange}
+            placeholder="write here..."
+            id="title"
+            value={values.title}
+            inputClassName="input-primary-style add-product--input"
+          />
+        </div>
+        <div className="add-product--field">
+          <span className="add-product--label">artist name*: </span>
+          <TextInput
+            id="artist"
+            onChange={handleChange}
+            placeholder="write here..."
+            value={values.artist}
+            inputClassName="input-primary-style add-product--input"
+          />
+        </div>
+        <div className="add-product--field">
+          <span className="add-product--label">release date*: </span>
+          <TextInput
+            id="releaseDate"
+            onChange={handleChange}
+            placeholder="write here..."
+            value={values.releaseDate}
+            inputClassName="input-primary-style add-product--input"
+          />
+        </div>
+        <div className="add-product--field">
+          <span className="add-product--label">price (in USD)*: </span>
+          <TextInput
+            id="price"
+            onChange={handleChange}
+            placeholder="write here..."
+            value={values.price}
+            inputClassName="input-primary-style add-product--input"
+          />
+        </div>
+        <div className="add-product--field">
+          <span className="add-product--label">genre*: </span>
+          <TextInput
+            id="genre"
+            onChange={handleChange}
+            value={values.genre}
+            placeholder="write here..."
+            inputClassName="input-primary-style add-product--input"
+          />
+        </div>
+        <div className="add-product--field">
+          <span className="add-product--label">description*: </span>
+          <textarea
+            id="description"
+            onChange={handleChange}
+            value={values.description}
+            placeholder="write here..."
+            className="add-product--textarea"
+            maxLength={3000}
+          ></textarea>
+        </div>
+        <div className="add-product--section-text">track list</div>
+        <form onSubmit={handleSubmit}>
+          {inputs.map((input: any, index: number) => (
+            <div key={index}>
+              <div className="add-product--field-song clasa1">
+                <span className="add-product--label-song">song name*: </span>
+                <TextInput
+                  placeholder="write here..."
+                  name="song"
+                  inputClassName="input-primary-style add-product--input"
+                  type={InputType.TEXT}
+                  value={input.song}
+                  onChange={(e: any) => handleSongsChange(index, e)}
+                />
+                <span className="add-product--label-song">minutes*: </span>
+                <TextInput
+                  placeholder="write here..."
+                  name="minutes"
+                  inputClassName="input-primary-style add-product--input"
+                  type={InputType.NUMBER}
+                  value={input.minutes}
+                  onChange={(e: any) => handleSongsChange(index, e)}
+                />
+                <span className="add-product--label-song">seconds*: </span>
+                <TextInput
+                  placeholder="write here..."
+                  name="seconds"
+                  inputClassName="input-primary-style add-product--input"
+                  type={InputType.NUMBER}
+                  value={input.seconds}
+                  onChange={(e: any) => handleSongsChange(index, e)}
+                />
+                {index !== inputs.length - 1 && (
+                  <a
+                    className="add-product--link"
+                    onClick={() => handleRemoveInput(index)}
+                  >
+                    remove
+                  </a>
+                )}
+              </div>
+
+              {index === inputs.length - 1 && (
+                <Button
+                  className="clasa1 btn-secondary-style "
+                  iconClassName="icon"
+                  hasIconLeft={true}
+                  iconLeft={require("../../assets/icons/PlusIcon.png")}
+                  name="add song"
+                  onClick={handleAddInput}
+                />
+              )}
+            </div>
+          ))}
+        </form>
+        <div className="add-product--section-text">presentation images</div>
+        {images.map((input: any, index: number) => (
           <div key={index}>
             <div className="add-product--field-song clasa1">
-              <span className="add-product--label-song">song name*: </span>
+              <span className="add-product--label-song">link*: </span>
               <TextInput
                 placeholder="write here..."
-                name="song"
                 inputClassName="input-primary-style add-product--input"
                 type={InputType.TEXT}
-                value={input.song}
-                onChange={(e: any) => handleSongsChange(index, e)}
+                value={input.link}
+                onChange={(e: any) => handleImagesChange(index, e)}
               />
-              <span className="add-product--label-song">minutes*: </span>
-              <TextInput
-                placeholder="write here..."
-                name="minutes"
-                inputClassName="input-primary-style add-product--input"
-                type={InputType.NUMBER}
-                value={input.minutes}
-                onChange={(e: any) => handleSongsChange(index, e)}
-              />
-              <span className="add-product--label-song">seconds*: </span>
-              <TextInput
-                placeholder="write here..."
-                name="seconds"
-                inputClassName="input-primary-style add-product--input"
-                type={InputType.NUMBER}
-                value={input.seconds}
-                onChange={(e: any) => handleSongsChange(index, e)}
-              />
-              {index !== inputs.length - 1 && (
+
+              {index !== images.length - 1 && (
                 <a
                   className="add-product--link"
-                  onClick={() => handleRemoveInput(index)}
+                  onClick={() => handleRemoveImagesInput(index)}
                 >
                   remove
                 </a>
               )}
             </div>
 
-            {index === inputs.length - 1 && (
+            {index === images.length - 1 && (
               <Button
                 className="clasa1 btn-secondary-style "
                 iconClassName="icon"
                 hasIconLeft={true}
                 iconLeft={require("../../assets/icons/PlusIcon.png")}
-                name="add song"
-                onClick={handleAddInput}
+                name="add image"
+                onClick={handleAddImagesInput}
               />
             )}
           </div>
         ))}
-      </form>
-      <div className="add-product--section-text">presentation images</div>
-      {images.map((input: any, index: number) => (
-        <div key={index}>
-          <div className="add-product--field-song clasa1">
-            <span className="add-product--label-song">link*: </span>
-            <TextInput
-              placeholder="write here..."
-              inputClassName="input-primary-style add-product--input"
-              type={InputType.TEXT}
-              value={input.link}
-              onChange={(e: any) => handleImagesChange(index, e)}
-            />
+        <div className="add-product--section-text">
+          details (label, format, etc)
+        </div>
+        {details.map((input: any, index: number) => (
+          <div key={index}>
+            <div className="add-product--field-song clasa1">
+              <span className="add-product--label-song">label*: </span>
+              <TextInput
+                placeholder="write here..."
+                name="label"
+                inputClassName="input-primary-style add-product--input"
+                type={InputType.TEXT}
+                value={input.label}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleDetailsChange(index, e)
+                }
+              />
+              <span className="add-product--label-song">value*: </span>
+              <TextInput
+                placeholder="write here..."
+                name="value"
+                inputClassName="input-primary-style add-product--input"
+                type={InputType.TEXT}
+                value={input.value}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleDetailsChange(index, e)
+                }
+              />
 
-            {index !== images.length - 1 && (
-              <a
-                className="add-product--link"
-                onClick={() => handleRemoveImagesInput(index)}
-              >
-                remove
-              </a>
+              {index !== details.length - 1 && (
+                <a
+                  className="add-product--link"
+                  onClick={() => handleRemoveDetailsInput(index)}
+                >
+                  remove
+                </a>
+              )}
+            </div>
+
+            {index === details.length - 1 && (
+              <Button
+                className="clasa1 btn-secondary-style "
+                iconClassName="icon"
+                hasIconLeft={true}
+                iconLeft={require("../../assets/icons/PlusIcon.png")}
+                name="add item"
+                onClick={handleAddDetailsInput}
+              />
             )}
           </div>
+        ))}
+        <div className="add-product--section-text">awards</div>
+        {awards.map((input: any, index: number) => (
+          <div key={index}>
+            <div className="add-product--field-song clasa1">
+              <span className="add-product--label-song">award name: </span>
+              <TextInput
+                placeholder="write here..."
+                inputClassName="input-primary-style add-product--input"
+                type={InputType.TEXT}
+                value={input.award}
+                onChange={(e: any) => handleAwardsChange(index, e)}
+              />
 
-          {index === images.length - 1 && (
-            <Button
-              className="clasa1 btn-secondary-style "
-              iconClassName="icon"
-              hasIconLeft={true}
-              iconLeft={require("../../assets/icons/PlusIcon.png")}
-              name="add image"
-              onClick={handleAddImagesInput}
-            />
-          )}
-        </div>
-      ))}
-      <div className="add-product--section-text">
-        details (label, format, etc)
-      </div>
-      {details.map((input: any, index: number) => (
-        <div key={index}>
-          <div className="add-product--field-song clasa1">
-            <span className="add-product--label-song">label*: </span>
-            <TextInput
-              placeholder="write here..."
-              name="label"
-              inputClassName="input-primary-style add-product--input"
-              type={InputType.TEXT}
-              value={input.label}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                handleDetailsChange(index, e)
-              }
-            />
-            <span className="add-product--label-song">value*: </span>
-            <TextInput
-              placeholder="write here..."
-              name="value"
-              inputClassName="input-primary-style add-product--input"
-              type={InputType.TEXT}
-              value={input.value}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                handleDetailsChange(index, e)
-              }
-            />
+              {index !== awards.length - 1 && (
+                <a
+                  className="add-product--link"
+                  onClick={() => handleRemoveAwardsInput(index)}
+                >
+                  remove
+                </a>
+              )}
+            </div>
 
-            {index !== details.length - 1 && (
-              <a
-                className="add-product--link"
-                onClick={() => handleRemoveDetailsInput(index)}
-              >
-                remove
-              </a>
+            {index === awards.length - 1 && (
+              <Button
+                className="clasa1 btn-secondary-style "
+                iconClassName="icon"
+                hasIconLeft={true}
+                iconLeft={require("../../assets/icons/PlusIcon.png")}
+                name="add award"
+                onClick={handleAddAwardsInput}
+              />
             )}
           </div>
-
-          {index === details.length - 1 && (
-            <Button
-              className="clasa1 btn-secondary-style "
-              iconClassName="icon"
-              hasIconLeft={true}
-              iconLeft={require("../../assets/icons/PlusIcon.png")}
-              name="add item"
-              onClick={handleAddDetailsInput}
-            />
-          )}
-        </div>
-      ))}
-      <div className="add-product--section-text">awards</div>
-      {awards.map((input: any, index: number) => (
-        <div key={index}>
-          <div className="add-product--field-song clasa1">
-            <span className="add-product--label-song">award name: </span>
-            <TextInput
-              placeholder="write here..."
-              inputClassName="input-primary-style add-product--input"
-              type={InputType.TEXT}
-              value={input.award}
-              onChange={(e: any) => handleAwardsChange(index, e)}
-            />
-
-            {index !== awards.length - 1 && (
-              <a
-                className="add-product--link"
-                onClick={() => handleRemoveAwardsInput(index)}
-              >
-                remove
-              </a>
-            )}
-          </div>
-
-          {index === awards.length - 1 && (
-            <Button
-              className="clasa1 btn-secondary-style "
-              iconClassName="icon"
-              hasIconLeft={true}
-              iconLeft={require("../../assets/icons/PlusIcon.png")}
-              name="add award"
-              onClick={handleAddAwardsInput}
-            />
-          )}
-        </div>
-      ))}
-      <div className="add-product--buttons-container">
-        <Button
-          type={ButtonType.Button}
-          name="back"
-          className="btn-secondary-style"
-        />
-        {isLoading ? (
-          <BeatLoader />
-        ) : (
+        ))}
+        <div className="add-product--buttons-container">
           <Button
-            type={ButtonType.Submit}
-            name="add product"
-            className="btn-primary-style clasa2"
-            onClick={onSubmit}
+            type={ButtonType.Button}
+            name="back"
+            className="btn-secondary-style"
           />
-        )}
+          {isLoading ? (
+            <BeatLoader />
+          ) : (
+            <Button
+              type={ButtonType.Submit}
+              name="add product"
+              className="btn-primary-style clasa2"
+              onClick={onSubmit}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

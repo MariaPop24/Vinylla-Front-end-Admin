@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
 import { BeatLoader } from "react-spinners";
 import UserCard from "../../components/molecules/UserCard/UserCard";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/organisms/Navbar/Navbar";
 
 const UsersPage = () => {
   const navigate = useNavigate();
@@ -69,6 +70,7 @@ const UsersPage = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.users.title" />
         <div className="all-products--search">

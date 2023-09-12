@@ -19,7 +19,6 @@ const App = () => {
     <BrowserRouter>
       <I18nProvider locale={LOCALES.ENGLISH}>
         <div className="App">
-          <Navbar />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/add-product" element={<AddProductPage />} />

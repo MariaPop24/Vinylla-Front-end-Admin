@@ -1,10 +1,12 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import "./NotFoundPage.scss";
+import Navbar from "../../components/organisms/Navbar/Navbar";
 
 const NotFoundPage = () => {
   return (
     <>
+      <Navbar />
       <div className="not-found-container">
         <div className="not-found-text-container animate">
           <div className="not-found-title">

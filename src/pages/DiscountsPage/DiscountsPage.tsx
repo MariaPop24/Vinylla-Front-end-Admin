@@ -8,6 +8,7 @@ import { FormattedMessage } from "react-intl";
 import { BeatLoader } from "react-spinners";
 import DiscountCard from "../../components/molecules/DiscountCard/DiscountCard";
 import AddDiscountModal from "../../components/organisms/AddDiscountModal/AddDiscountModal";
+import Navbar from "../../components/organisms/Navbar/Navbar";
 
 const DiscountsPage = () => {
   const navigate = useNavigate();
@@ -71,6 +72,7 @@ const DiscountsPage = () => {
   }, [user, navigate]);
   return (
     <div>
+      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.discounts.title" />
         <div className="all-products--search">

@@ -6,6 +6,7 @@ import { FormattedMessage } from "react-intl";
 import TextBlock from "../../components/molecules/TextBlock/TextBlock";
 import ReportCard from "../../components/molecules/ReportCard/ReportCard";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../../components/organisms/Navbar/Navbar";
 
 const ReportsPage = () => {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ const ReportsPage = () => {
 
   return (
     <div>
+      <Navbar />
       <div className="all-products--container">
         <TextBlock messageId="pages.reports.title" />
         <div className="all-product--albums">
