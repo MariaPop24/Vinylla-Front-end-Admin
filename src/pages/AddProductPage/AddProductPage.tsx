@@ -163,12 +163,29 @@ const AddProductPage = () => {
     });
   };
 
-  const onSubmit = async (values: any) => {
+  const onSubmit = async () => {
     try {
       setIsLoading(true);
-
+      const transformedSongs = inputs.map((song) => ({
+        title: song.song,
+        length: {
+          minutes: song.minutes,
+          seconds: song.seconds,
+        },
+      }));
+      const transformedImages = images.map((image) => image.link);
+      const transformedAwards = awards.map((award) => award.award);
       await axios.post("http://localhost:8000/api/albums/postAlbum", {
-        ...values,
+        title: values.title,
+        artist: values.artist,
+        price: values.price,
+        genre: values.genre,
+        releaseDate: values.releaseDate,
+        description: values.description,
+        songs: transformedSongs,
+        images: transformedImages,
+        details,
+        awards: transformedAwards,
       });
 
       setIsLoading(false);

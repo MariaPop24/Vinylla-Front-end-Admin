@@ -44,7 +44,7 @@ const AllProductsPage = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        "http://localhost:8000/api/albums/getAlbums"
+        "http://localhost:8000/api/albums/getAllAlbums"
       );
       const albums = response.data.albums;
       setProducts(albums);
